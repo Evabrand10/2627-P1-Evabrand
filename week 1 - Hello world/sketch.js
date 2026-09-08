@@ -10,7 +10,9 @@ function draw() {
  text('Eva Lamberts', 50, 50);
  textStyle(BOLD); 
  //makes my name appear on the canvas
-  fill(0, 0, 255);//shows the color blue 
+ stroke(0)
+ strokeWeight(1);
+ fill(0, 0, 255);//shows the color blue 
   rect(50, 150, 200, 110);
   fill(255, 0, 0); //shows the color red
   rect(50, 110, 200, 50);
@@ -84,17 +86,41 @@ function draw() {
  circle(600,475,20,20,);
  //dobbelsteen
  noStroke();
+ 
+ fill(255,215,174);
+ rect(740,290,235,20);
+ rect(740,310,235,20);
+ rect(740,330,235,20);
+ 
  fill("red");
  rect(800,90,100,20);
  rect(780,110,175,20);
+ rect(780,230,135,20);
+ rect(760,250,195,20);
+ rect(740,270,235,20);
+ rect(780,290,155,20);
+ 
  fill(255,215,174);
  rect(780,130,120,20);
  rect(760,150,195,20);
  rect(760,170,215,20);
  rect(760,190,195,20);
- rect(790,210,145,20);
+ rect(800,210,135,20);
+ 
  fill("brown");
  rect(780,130,60,20);
  rect(760,150,20,20); rect(800,150,20,20);
- rect(760,170,20,20);
+ rect(760,170,20,20); rect(800,170,40,20); 
+ rect(760,190,40  ,20);
+ 
+ fill(0);
+ rect(880,190,75,20);
+ rect(900,170,20,20);
+ rect(880,130,20,40);
+ 
+ fill(0,0,255);
+ rect(800,250,20,20);
+ rect(800,230,20,20);
+ rect(800,270,100,20);
+ rect(880,250,20,20);
 }
