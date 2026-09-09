@@ -141,6 +141,7 @@ function draw() {
  text('mario', 780, 50);
  textStyle(BOLD); 
  image(image1,1200,300,400,400);
+ //mario
 
 }
 
