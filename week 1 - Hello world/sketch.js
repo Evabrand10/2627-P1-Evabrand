@@ -1,4 +1,4 @@
-
+let image1;
 function setup() {
  createCanvas(1960, 800);
 
@@ -136,10 +136,16 @@ function draw() {
  fill("yellow");
  rect(820,290,20,20);
  rect(880,290,20,20);
- 
- image(img,900,350,100,100);
- 
+ fill(0);
+ textSize(26);
+ text('mario', 780, 50);
+ textStyle(BOLD); 
+ image(image1,1200,300,400,400);
 
+}
+
+function preload() {
+  image1 = loadImage("JSON.jpg");
 }
 
 
