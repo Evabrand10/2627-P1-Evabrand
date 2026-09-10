@@ -1,13 +1,15 @@
-let image1;
+let = image1;
+let doffyname = "Do flamingo";
 function setup() {
  createCanvas(1960, 800);
+ 
 
 }
  
 
 function draw() {
   background (367);
- 
+ let doffyname = "Do flamingo";
   fill ("pink");
  textSize(26);
  text('Eva Lamberts', 50, 50);
@@ -140,8 +142,13 @@ function draw() {
  textSize(26);
  text('mario', 780, 50);
  textStyle(BOLD); 
- image(image1,1200,300,400,400);
+ 
  //mario
+ image(image1,1000,300,400,400);
+ textSize(26);
+ fill(0);
+ text(doffyname, 1000, 200);
+
 
 }
 
