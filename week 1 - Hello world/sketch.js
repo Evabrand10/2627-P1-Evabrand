@@ -154,7 +154,7 @@ function draw() {
 
 function preload() {
   image1 = loadImage("JSON.jpg");
-}
+} 
 
 
  

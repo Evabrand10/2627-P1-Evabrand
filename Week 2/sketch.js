@@ -12,7 +12,13 @@ function setup() {
 } 
 
 function draw() {
- background(53, 182, 246);
+ 
+ 
+  
+  background(53, 182, 246);
+  
+  fill("yellow");
+  circle(200,100,50);
   drawWolk(Cloudx1, 145);
   drawWolk(Cloudx2, 100); 
   drawWolk(Cloudx3,125);
@@ -31,11 +37,19 @@ if (Cloudx2 >= 850){
     Cloudx3 = -50;
     
   }
-   
   //wolken
+  fill(70);
+  rect(0,500,800,100);
   
-  fill ("yellow")
-  circle (200,100,50);
+  fill(235);
+  rect(75,545,75,10,10);
+  rect(225,545,75,10,10);
+  rect(375,545,75,10,10);
+  rect(525,545,75,10,10);
+   rect(675,545,75,10,10);
+  
+  
+ 
 
 }
 function drawWolk(xPos , yPos) {
