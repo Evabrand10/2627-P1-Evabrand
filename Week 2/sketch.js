@@ -5,9 +5,23 @@ let Cloudx3 = 400;
 let CLoudspeed1 = -2.3
 let Cloudspeed2 = -2.1
 let Cloudspeed3 = -2.5
+let sunspeed = 1.3
+let sunx = 200;
+let light = 0
 
 
 
+function keyPressed(){
+  if (keyCode === ENTER) {
+   light = light + 1;
+  }
+ if (light >= 3){
+  light = 0
+ }
+
+ 
+  
+}
 function setup() {
   createCanvas(800, 600);
 } 
@@ -17,9 +31,17 @@ function draw() {
  
   
   background(53, 182, 246);
-  
+  stroke("orange");
+  strokeWeight(3);
   fill("yellow");
-  circle(200,100,50);
+  circle(sunx,100,50);
+  sunx = sunx + sunspeed;
+  
+ if (sunx >= 850){
+  sunx = -50;
+ }
+
+ noStroke();
   fill("gray");
   triangle(350,500,450,150,650,500);
   drawWolk(Cloudx1, 145);
@@ -69,11 +91,28 @@ function drawStoplight(xPos, yPos, xposrect ,yposrect) {
   rect(xposrect+10, yposrect+135, 30, 50);
   stroke(0);
   strokeWeight(1);
-  fill(0,55,0);
+
+  // Stoplight GROOEEEENNN
+  if (light == 1){
+    fill(0, 255, 0);
+  }
+  else{
+    fill(0,55,0);
+  }
+  //stoplight oranjuhhh
   circle(xPos, yPos+90, 35, 35);
-  fill(80, 50, 0);
+   if (light == 2){
+    fill(255, 165, 0);
+  }
+  else{
+   fill(80, 50, 0);  }
+  
   circle(xPos, yPos+45, 35, 35);
-  fill(80,0,0);
+    if (light == 0){
+    fill(255, 0, 0);
+  }
+  else{
+   fill(80, 0, 0);  }
   circle(xPos, yPos, 35, 35);
 }
 //stopligt
