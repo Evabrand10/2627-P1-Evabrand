@@ -34,13 +34,14 @@ function draw() {
   stroke("orange");
   strokeWeight(3);
   fill("yellow");
-  circle(sunx,100,50);
+  circle(sunx,100,75);
   sunx = sunx + sunspeed;
   
  if (sunx >= 850){
   sunx = -50;
  }
-
+ 
+ 
  noStroke();
   fill("gray");
   triangle(350,500,450,150,650,500);
@@ -81,10 +82,21 @@ if (Cloudx2 <= -50){
   triangle(550,500,650,350,950,500);
   drawStoplight(600,340,575,315); 
   
-  
- 
-
+  Drawtree(100,400,75,400);
+  Drawtree(500,400,475,400);
+  Drawtree(300,400,275,400);
+  Drawtree(500,400,475,400);
 }
+function Drawtree(xPosleaf,yPosleaf,xPoswood,yPoswood) {
+  noStroke();
+  fill(150, 75, 0);
+  rect(xPoswood, yPoswood, 40, 110);
+  fill("green");
+  circle(xPosleaf, yPosleaf, 75);
+  fill("darkgreen");
+  circle(xPosleaf - 10, yPosleaf, 75);
+}
+
 function drawStoplight(xPos, yPos, xposrect ,yposrect) {
   fill(100);
   rect(xposrect, yposrect, 50, 135);
@@ -106,7 +118,7 @@ function drawStoplight(xPos, yPos, xposrect ,yposrect) {
   }
   else{
    fill(80, 50, 0);  }
-  
+   //Stoplight ROOOODDDD
   circle(xPos, yPos+45, 35, 35);
     if (light == 0){
     fill(255, 0, 0);
