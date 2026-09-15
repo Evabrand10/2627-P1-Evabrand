@@ -122,10 +122,12 @@ if (Cloudx2 <= -50){
    if (light == 2 && carx <= 475){
     carspeed = 1.25;
    }
+
+   
    if (carx >= 867){
-    carcolorR = 255;
-    carcolorG = 255;
-    carcolorB = 255;
+    carcolorR = random(0,255);
+    carcolorG = random(0,255);
+    carcolorB = random(0,255);
    }
     DrawCar2(carx2 ,425);
    
@@ -137,7 +139,7 @@ if (Cloudx2 <= -50){
     carspeed2 = 0;
     }  
     if (carx2 < 465 && light == 0){
-      carspeed = 1.5;
+      carspeed2 = 1.5;
     }
   if(light == 1|| carx2 >= 500){
     carspeed2 = 3;
@@ -174,11 +176,12 @@ if (Cloudx2 <= -50){
     carcolorG1 = random(0,255);
     carcolorB1 = random(0,255);
   }
-  if (carx >= carx2 - 160 && carx2 >= carx){
-    carx = carx2 - 160;
-  }
+  
   if (carx2 >= carx - 160 && carx >= carx2){
     carx2 = carx - 160;
+  }
+   if (carx >= carx2 - 160 && carx2 >= carx){
+    carx = carx2 - 160;
   }
      
      
