@@ -9,20 +9,20 @@ let sunspeed = 1.3
 let sunx = 200;
 let light = 0;
 let carx = 170;
-let carspeed = 3;  
-let carcolorR = 1
-let carcolorG = 1
-let carcolorB = 1
+let carspeed = 2.5;  
+let carcolorR = 81
+let carcolorG = 95
+let carcolorB = 80
 let carx1 = 170;
-let carspeed1 = 2;  
+let carspeed1 = 2.5;  
 let carcolorR1 = 255
 let carcolorG1 = 164
 let carcolorB1 = 40
 let carx2 = 100;
 let carspeed2 = 3;  
-let carcolorR2= 1
-let carcolorG2= 1
-let carcolorB2= 1
+let carcolorR2= 80
+let carcolorG2= 153
+let carcolorB2= 123
 
 
 function keyPressed(){
@@ -106,67 +106,82 @@ if (Cloudx2 <= -50){
   
    DrawCar(carx,425);
   carx = carx + carspeed
-  if(carx >= 870) {
-    carx = -50;
+  if(carx >= 1400) {
+    carx = -100;
   }
    if (carx == 475 && light == 0){
     carspeed = 0;
    }
+   
+    if (carx < 470 && light == 0){
+      carspeed = 1.25;
+    }
    if (light == 1 || carx >= 500){
-     carspeed = 3;
+     carspeed = 2.5;
    }
    if (light == 2 && carx <= 475){
-    carspeed = 1,5;
+    carspeed = 1.25;
    }
    if (carx >= 867){
-    carcolorR = random(0,255);
-    carcolorG = random(0,255);
-    carcolorB = random(0,255);
-    
+    carcolorR = 255;
+    carcolorG = 255;
+    carcolorB = 255;
    }
-   DrawCar1(carx1 ,475);
-   carx1 = carx1 +carspeed1
-   if (carx1 >= 870){
-    carx1 = -70;
-   } 
-  if(carx1 == 474 && light == 0){
-    carspeed1 = 0;
-    }  
-  if(light == 1|| carx1 >= 500){
-    carspeed1 = 2;
-  }
-  if (light == 2 && carx1 <= 475) {
-    carspeed1 = 1;
-  }
-  if(carx1 >= 868){
-    carcolorR1 = random(0,255);
-    carcolorG1 = random(0,255);
-    carcolorB1 = random(0,255);
-  }
-  DrawCar2(carx2 ,425);
-
+    DrawCar2(carx2 ,425);
+   
  carx2 = carx2 +carspeed2
    if (carx2 >= 870){
     carx2 = -70;
    } 
-  if(carx2 == 475 && light == 0){
+  if(carx2 == 473 && light == 0){
     carspeed2 = 0;
     }  
+    if (carx2 < 465 && light == 0){
+      carspeed = 1.5;
+    }
   if(light == 1|| carx2 >= 500){
-    carspeed2 = 2;
+    carspeed2 = 3;
   }
-  if (light == 2 && carx2 <= 475) {
-    carspeed2 = 1;
+  if (light == 2 && carx2 <= 470) {
+    carspeed2 = 1.5;
   }
   if(carx2 >= 868){
     carcolorR2 = random(0,255);
     carcolorG2 = random(0,255);
     carcolorB2 = random(0,255);
   }
-  if (carx1 >carx2 && carx2 > carx1){
-     
 
+   DrawCar1(carx1 ,475);{
+   carx1 = carx1 +carspeed1
+   }
+   if (carx1 >= 870){
+    carx1 = -70;
+   }
+   if (carx1 < 470 && light == 0 ){
+    carspeed1 = 1.25;
+   }
+  if(carx1 == 475 && light == 0){
+    carspeed1 = 0;
+    }  
+  if(light == 1|| carx1 >= 500){
+    carspeed1 = 2.5;
   }
+  if (light == 2 && carx1 <= 472) {
+    carspeed1 = 1.25;
+  }
+  if(carx1 >= 868){
+    carcolorR1 = random(0,255);
+    carcolorG1 = random(0,255);
+    carcolorB1 = random(0,255);
+  }
+  if (carx >= carx2 - 160 && carx2 >= carx){
+    carx = carx2 - 160;
+  }
+  if (carx2 >= carx - 160 && carx >= carx2){
+    carx2 = carx - 160;
+  }
+     
+     
   Drawtree(500,500,475,500);
  
 }
