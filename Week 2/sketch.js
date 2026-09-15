@@ -10,6 +10,21 @@ let sunx = 200;
 let light = 0;
 let carx = 170;
 let carspeed = 3;  
+let carcolorR = 1
+let carcolorG = 1
+let carcolorB = 1
+let carx1 = 170;
+let carspeed1 = 2;  
+let carcolorR1 = 255
+let carcolorG1 = 164
+let carcolorB1 = 40
+let carx2 = 100;
+let carspeed2 = 3;  
+let carcolorR2= 1
+let carcolorG2= 1
+let carcolorB2= 1
+
+
 function keyPressed(){
   if (keyCode === ENTER) {
    light = light + 1;
@@ -91,30 +106,100 @@ if (Cloudx2 <= -50){
   
    DrawCar(carx,425);
   carx = carx + carspeed
-  if(carx >= 850) {
+  if(carx >= 870) {
     carx = -50;
   }
-   if (carx >= 600 && light == 0){
-    carspeed = 0
+   if (carx == 475 && light == 0){
+    carspeed = 0;
    }
-   if (light == 1){
-     carspeed = 3
+   if (light == 1 || carx >= 500){
+     carspeed = 3;
    }
-   
+   if (light == 2 && carx <= 475){
+    carspeed = 1,5;
+   }
+   if (carx >= 867){
+    carcolorR = random(0,255);
+    carcolorG = random(0,255);
+    carcolorB = random(0,255);
+    
+   }
+   DrawCar1(carx1 ,475);
+   carx1 = carx1 +carspeed1
+   if (carx1 >= 870){
+    carx1 = -70;
+   } 
+  if(carx1 == 474 && light == 0){
+    carspeed1 = 0;
+    }  
+  if(light == 1|| carx1 >= 500){
+    carspeed1 = 2;
+  }
+  if (light == 2 && carx1 <= 475) {
+    carspeed1 = 1;
+  }
+  if(carx1 >= 868){
+    carcolorR1 = random(0,255);
+    carcolorG1 = random(0,255);
+    carcolorB1 = random(0,255);
+  }
+  DrawCar2(carx2 ,425);
+
+ carx2 = carx2 +carspeed2
+   if (carx2 >= 870){
+    carx2 = -70;
+   } 
+  if(carx2 == 475 && light == 0){
+    carspeed2 = 0;
+    }  
+  if(light == 1|| carx2 >= 500){
+    carspeed2 = 2;
+  }
+  if (light == 2 && carx2 <= 475) {
+    carspeed2 = 1;
+  }
+  if(carx2 >= 868){
+    carcolorR2 = random(0,255);
+    carcolorG2 = random(0,255);
+    carcolorB2 = random(0,255);
+  }
+  if (carx1 >carx2 && carx2 > carx1){
+     
+
+  }
   Drawtree(500,500,475,500);
-  
  
 }
 function DrawCar(Xpos, Ypos) {
   fill("lightblue");
   rect(Xpos, Ypos, 50, 60, 10);
-  fill("hotpink");
+  fill(carcolorR,carcolorG,carcolorB);
+  rect(Xpos-70, Ypos+44, 150, 50, 10);
+  rect(Xpos-70, Ypos+1, 90, 70, 10);
+  fill(0);
+  circle(Xpos-44, Ypos+99, 50);
+  circle(Xpos+30, Ypos+99, 50);
+}
+  function DrawCar2(Xpos, Ypos) {
+  fill("lightblue");
+  rect(Xpos, Ypos, 50, 60, 10);
+  fill(carcolorR2,carcolorG2,carcolorB2);
   rect(Xpos-70, Ypos+44, 150, 50, 10);
   rect(Xpos-70, Ypos+1, 90, 70, 10);
   fill(0);
   circle(Xpos-44, Ypos+99, 50);
   circle(Xpos+30, Ypos+99, 50);
 }//Xpos=170 Ypos= 451
+function DrawCar1(Xpos, Ypos) {
+  fill("lightblue");
+  rect(Xpos, Ypos, 50, 60, 10);
+  fill(carcolorR1,carcolorG1,carcolorB1);
+  rect(Xpos-70, Ypos+44, 150, 50, 10);
+  rect(Xpos-70, Ypos+1, 90, 70, 10);
+  fill(0);
+  circle(Xpos-44, Ypos+99, 50);
+  circle(Xpos+30, Ypos+99, 50);
+}
 
 function Drawtree(xPosleaf,yPosleaf,xPoswood,yPoswood) {
   let leafmovementleftright = xPosleaf + Math.sin(frameCount * 0.04) * 3;
