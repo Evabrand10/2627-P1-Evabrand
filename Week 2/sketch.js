@@ -7,10 +7,9 @@ let Cloudspeed2 = -2.1
 let Cloudspeed3 = -2.5
 let sunspeed = 1.3
 let sunx = 200;
-let light = 0
-
-
-
+let light = 0;
+let carx = 170;
+let carspeed = 3;  
 function keyPressed(){
   if (keyCode === ENTER) {
    light = light + 1;
@@ -41,7 +40,7 @@ function draw() {
   sunx = -50;
  }
  
- 
+
  noStroke();
   fill("gray");
   triangle(350,500,450,150,650,500);
@@ -83,18 +82,53 @@ if (Cloudx2 <= -50){
   drawStoplight(600,340,575,315); 
   
   Drawtree(100,400,75,400);
-  Drawtree(500,400,475,400);
+  Drawtree(400,400,375,400);
+  Drawtree(200,400,175,400);
   Drawtree(300,400,275,400);
-  Drawtree(500,400,475,400);
+  
+  fill("darkgreen");
+  rect(0,500,800,20);
+  
+   DrawCar(carx,425);
+  carx = carx + carspeed
+  if(carx >= 850) {
+    carx = -50;
+  }
+   if (carx >= 600 && light == 0){
+    carspeed = 0
+   }
+   if (light == 1){
+     carspeed = 3
+   }
+   
+  Drawtree(500,500,475,500);
+  
+ 
 }
+function DrawCar(Xpos, Ypos) {
+  fill("lightblue");
+  rect(Xpos, Ypos, 50, 60, 10);
+  fill("hotpink");
+  rect(Xpos-70, Ypos+44, 150, 50, 10);
+  rect(Xpos-70, Ypos+1, 90, 70, 10);
+  fill(0);
+  circle(Xpos-44, Ypos+99, 50);
+  circle(Xpos+30, Ypos+99, 50);
+}//Xpos=170 Ypos= 451
+
 function Drawtree(xPosleaf,yPosleaf,xPoswood,yPoswood) {
+  let leafmovementleftright = xPosleaf + Math.sin(frameCount * 0.04) * 3;
+
+  let leafmovementrightleft = xPosleaf + Math.sin(frameCount * -0.04) * 3;
+ 
   noStroke();
   fill(150, 75, 0);
   rect(xPoswood, yPoswood, 40, 110);
   fill("green");
-  circle(xPosleaf, yPosleaf, 75);
+  circle(leafmovementleftright , yPosleaf, 75);
   fill("darkgreen");
-  circle(xPosleaf - 10, yPosleaf, 75);
+  circle(leafmovementrightleft - 10, yPosleaf, 75);
+  
 }
 
 function drawStoplight(xPos, yPos, xposrect ,yposrect) {
@@ -117,7 +151,7 @@ function drawStoplight(xPos, yPos, xposrect ,yposrect) {
     fill(255, 165, 0);
   }
   else{
-   fill(80, 50, 0);  }
+   fill(120, 50, 0);  }
    //Stoplight ROOOODDDD
   circle(xPos, yPos+45, 35, 35);
     if (light == 0){
@@ -138,6 +172,7 @@ function drawWolk(xPos , yPos) {
   circle(xPos, yPos + 5, 45);
   circle(xPos + 20, yPos, 55);
   circle(xPos + 50, yPos + 5, 45);
+  
   //wolk
 }
 
