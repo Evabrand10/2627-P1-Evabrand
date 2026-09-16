@@ -37,7 +37,7 @@ function draw() {
 function keyPressed(){
 
 if(keyCode === 13){
-  cijfer = random(0,100);
+  cijfer = random(100);
   console.log("enter is ingedrukt")}
 }
 
