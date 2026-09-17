@@ -15,9 +15,11 @@ function draw() {
   fill (0);
   textSize(26);
   text(uitslag,200,200);
-  }
+  
+
+
   if(cijfer <= 50){
-    uitslag = "hij werkt niet:("
+    uitslag = "Onvoldoende:("
     console.log("je bent tering dom");
   }
   else if(cijfer <= 69){
@@ -29,16 +31,17 @@ function draw() {
     console.log("DE REST IS TERING DOM SWA");
   }
   else if(cijfer <= 100){
-    uitslag = "HIJ WERKT!!!:)"
+    uitslag = "UITSTEKENT!!!:)"
     console.log("school is te makkelijk man geef dat diploma maar");
   }
 
- 
-function keyPressed(){
+}
+  function keyPressed(){
 
 if(keyCode === 13){
-  cijfer = random(100);
+  cijfer = random(0,100);
   console.log("enter is ingedrukt")}
 }
+
 
 

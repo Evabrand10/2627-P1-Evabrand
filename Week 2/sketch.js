@@ -26,7 +26,7 @@ let carcolorB2= 123
 
 
 function keyPressed(){
-  if (keyCode === SPACE) {
+  if (keyCode === 13) {
    light = light + 1;
   }
  if (light >= 3){

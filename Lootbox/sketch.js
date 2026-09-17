@@ -17,7 +17,7 @@ function draw() {
   background(255);
 
 
-  
+
   if (frameRate1) {
     lootboxanimation += 1;
   }
@@ -32,10 +32,10 @@ function draw() {
   else if (lootboxanimation <= 99) {
     image(image3, 400, 200, 400, 400);
   }
-  
-  if (lootboxdown >= 125){
+
+  if (lootboxdown >= 125) {
     lootboxdown = 125;
-    
+
   }
 
   if (lootboxanimation >= 99) {
@@ -43,8 +43,9 @@ function draw() {
     console.log(lootboxdown);
     image(image3, 400, 200 + lootboxdown, 400 - lootboxdown, 400 - lootboxdown)
   }
- 
 }
+
+
 function preload() {
   image1 = loadImage("closed.png");
   image2 = loadImage("opening.png");
