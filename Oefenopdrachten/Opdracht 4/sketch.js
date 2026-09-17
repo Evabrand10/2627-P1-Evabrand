@@ -1,7 +1,7 @@
-let framerate1
+
 let light = 0
 let teller = 0
-let framerate
+
 
 function setup() {
   createCanvas(800, 600);
@@ -22,10 +22,24 @@ function draw() {
   textSize(12);
   text("1.houd b ingedrukt en dan verschijnt er een kubus", 20, 20);
   text("3.stoplight veranderdt van kleur met enter", 40, 270);
-  text("2.klick spatie getal gaat naar nul",40 , 150);
-  text(teller,40,170);
-  
-  
+  text("2.klik spatie getal gaat naar nul klik dan een andere knop om de teller weer te laten tellen", 40, 150);
+  text(teller, 40, 170);
+  if (teller >= 0) {
+    teller = teller + 1
+  }
+  if (teller >= 500) {
+    teller = 0
+  }
+  if (keyCode === 32) {
+    teller = 0
+  }
+
+
+
+
+
+
+
   if (keyIsPressed === true) {
     if (keyCode === 66) { //b
       stroke(0);
@@ -36,14 +50,9 @@ function draw() {
   }
 
 
+
   noStroke();
   drawStoplight(40, 300, 15, 278);
-if(teller >= 0){
-  framerate === true 
-}
-if(framerate){
-  teller += 1
-}
 }
 
 function drawStoplight(xPos, yPos, xposrect, yposrect) {
