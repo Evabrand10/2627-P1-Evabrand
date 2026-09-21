@@ -171,7 +171,7 @@ if (Cloudx2 <= -50){
   if (light == 2 && carx1 <= 472) {
     carspeed1 = 1.25;
   }
-  if(carx1 >= 868){
+  if(carx1 >= 865){
     carcolorR1 = random(0,255);
     carcolorG1 = random(0,255);
     carcolorB1 = random(0,255);
