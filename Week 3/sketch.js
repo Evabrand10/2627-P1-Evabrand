@@ -37,19 +37,26 @@ let rectx8 = 625
 let rectY8 = 475
 let rectx9 = 750
 let rectY9 = 475
-let colorchecker1 = 255
-let colorchecker2 = 255
-let colorchecker3 = 255
-let colorchecker4 = 255
-let colorchecker5 = 255
-let colorchecker6 = 255
-let colorchecker7 = 255
-let colorchecker8 = 255
-let colorchecker9 = 255
+let rectx10 = 1000
+let rectY10 = 650
+let rectW10 = 50
+let rectH10 = 50
+let colorchecker1 = 0
+let colorchecker2 = 0
+let colorchecker3 = 0
+let colorchecker4 = 0
+let colorchecker5 = 0
+let colorchecker6 = 0
+let colorchecker7 = 0
+let colorchecker8 = 0
+let colorchecker9 = 0
 let playerturn = 0
 let playercolor = [playersturnR, playersturnG, playersturnB];
+let reset = 0
+
+
 function setup() {
-  createCanvas(1400, 800);
+  createCanvas(1400, 700);
 
 }
 
@@ -58,19 +65,37 @@ function draw() {
   fill(0);
   rect(475, 200, 400, 400, 10);
   if (playerturn == 0) {
-   playercolor = [255,0,0]
+    playercolor = [255, 0, 0]
   }
 
   else if (playerturn == 1) {
-    playercolor = [0,100,255]
+    playercolor = [0, 100, 255]
   }
 
 
-  
 
-  fill(colorchecker1);
+  if (colorchecker1 == 0){
+    fill(255)
+  }
+  else if (colorchecker1 == 1){
+    fill("blue")
+  }
+  else{
+    fill("red");
+  }
   rect(rectx1, rectY1, rectW1, rectH1, 10);//left top
-  fill(colorchecker2);
+  
+  
+  
+  if (colorchecker2 == 0){
+    fill(255)
+  }
+  else if (colorchecker2 == 1){
+    fill("blue")
+  }
+  else{
+    fill("red");
+  }
   rect(rectx2, rectY2, rectW2, rectH2, 10);//middle top
   fill(colorchecker3);
   rect(rectx3, rectY3, rectW3, rectH3, 10);// right top
@@ -86,93 +111,179 @@ function draw() {
   rect(rectx8, rectY8, rectW8, rectH8, 10);//middle bottom
   fill(colorchecker9);
   rect(rectx9, rectY9, rectW9, rectH9, 10);//right bottom
+  fill("yellow");
+  rect(rectx10, rectY10, rectW10, rectH10, 10);//reset button
 
 
 
 }
 
-function mousePressed(){
-  if(mouseButton == "left"){
+function mousePressed() {
+  if (mouseButton == "left" && mouseX > rectx1 && mouseX < rectx1 + rectW1 &&
+    mouseY > rectY1 && mouseY < rectY1 + rectH1) {
     handleClick();
-    playerturn = (playerturn + 1) 
-    if (playerturn == 2){
+    playerturn = (playerturn + 1)
+    if (playerturn == 2) {
       playerturn = 0
     }
-   
 
-      
+
+
   }
+  if (mouseButton == "left" && mouseX > rectx2 && mouseX < rectx2 + rectW2 &&
+    mouseY > rectY2 && mouseY < rectY2 + rectH2) {
+    handleClick();
+    playerturn = (playerturn + 1)
+    if (playerturn == 2) {
+      playerturn = 0
+    }
+  }
+
+
+  if (mouseButton == "left" && mouseX > rectx3 && mouseX < rectx3 + rectW3 &&
+    mouseY > rectY3 && mouseY < rectY3 + rectH3) {
+    handleClick();
+    playerturn = (playerturn + 1)
+    if (playerturn == 2) {
+      playerturn = 0
+    }
+  }
+  if (mouseButton == "left" && mouseX > rectx4 && mouseX < rectx4 + rectW4 &&
+    mouseY > rectY4 && mouseY < rectY4 + rectH4) {
+    handleClick();
+    playerturn = (playerturn + 1)
+    if (playerturn == 2) {
+      playerturn = 0
+    }
+  }
+  if (mouseButton == "left" && mouseX > rectx5 && mouseX < rectx5 + rectW5 &&
+    mouseY > rectY5 && mouseY < rectY5 + rectH5) {
+    handleClick();
+    playerturn = (playerturn + 1)
+    if (playerturn == 2) {
+      playerturn = 0
+    }
+  }
+  if (mouseButton == "left" && mouseX > rectx6 && mouseX < rectx6 + rectW6 &&
+    mouseY > rectY6 && mouseY < rectY6 + rectH6) {
+    handleClick();
+    playerturn = (playerturn + 1)
+    if (playerturn == 2) {
+      playerturn = 0
+    }
+  }
+  if (mouseButton == "left" && mouseX > rectx7 && mouseX < rectx7 + rectW7 &&
+    mouseY > rectY7 && mouseY < rectY7 + rectH7) {
+    handleClick();
+    playerturn = (playerturn + 1)
+    if (playerturn == 2) {
+      playerturn = 0
+    }
+  }
+  if (mouseButton == "left" && mouseX > rectx8 && mouseX < rectx8 + rectW8 &&
+    mouseY > rectY8 && mouseY < rectY8 + rectH8) {
+    handleClick();
+    playerturn = (playerturn + 1)
+    if (playerturn == 2) {
+      playerturn = 0
+    }
+  }
+  if (mouseButton == "left" && mouseX > rectx9 && mouseX < rectx9 + rectW9 &&
+    mouseY > rectY9 && mouseY < rectY9 + rectH9) {
+    handleClick();
+    playerturn = (playerturn + 1)
+    if (playerturn == 2) {
+      playerturn = 0
+
+    }
+  }
+  if (mouseButton == "left" && mouseX > rectx10 && mouseX < rectx10 + rectW10 &&
+    mouseY > rectY10 && mouseY < rectY10 + rectH10) {
+    reset = reset + 1
+    if (reset == 2){
+      reset = 0
+    }
+    colorchecker1 = 255;
+    colorchecker2 = 255;
+    colorchecker3 = 255;
+    colorchecker4 = 255;
+    colorchecker5 = 255;
+    colorchecker6 = 255;
+    colorchecker7 = 255;
+    colorchecker8 = 255;
+    colorchecker9 = 255;  
+  }
+  if(reset == 1){
+    playercolor = (0,0,0);
+  }
+
+
 }
 
-function handleClick(){
+
+
+function handleClick() {
   if (mouseX > rectx1 && mouseX < rectx1 + rectW1 &&
     mouseY > rectY1 && mouseY < rectY1 + rectH1
   ) {
-    colorchecker1 = playercolor;
-    rectH1 = 105
-    rectW1 = 105
+    colorchecker1 = 1;
+
 
 
   }
-  
+
 
   else if (mouseX > rectx2 && mouseX < rectx2 + rectW2 &&
     mouseY > rectY2 && mouseY < rectY2 + rectH2
   ) {
     colorchecker2 = playercolor;
-    rectH2 = 105
-    rectW2 = 105
+
   }
   else if (mouseX > rectx3 && mouseX < rectx3 + rectW3 &&
     mouseY > rectY3 && mouseY < rectY3 + rectH3
   ) {
     colorchecker3 = playercolor;
-    rectH3 = 105
-    rectW3 = 105
+
 
   }
   else if (mouseX > rectx4 && mouseX < rectx4 + rectW4 &&
     mouseY > rectY4 && mouseY < rectY4 + rectH4
   ) {
     colorchecker4 = playercolor;
-    rectH4 = 105
-    rectW4 = 105
+
   }
   else if (mouseX > rectx5 && mouseX < rectx5 + rectW5 &&
     mouseY > rectY5 && mouseY < rectY5 + rectH5
   ) {
     colorchecker5 = playercolor;
-    rectH5 = 105
-    rectW5 = 105
+
   }
   else if (mouseX > rectx6 && mouseX < rectx6 + rectW6 &&
     mouseY > rectY6 && mouseY < rectY6 + rectH6
   ) {
     colorchecker6 = playercolor;
-    rectH6 = 105
-    rectW6 = 105
+
   }
   else if (mouseX > rectx7 && mouseX < rectx7 + rectW7 &&
     mouseY > rectY7 && mouseY < rectY7 + rectH7
   ) {
     colorchecker7 = playercolor;
-    rectH7 = 105
-    rectW7 = 105
+
   }
   else if (mouseX > rectx8 && mouseX < rectx8 + rectW8 &&
     mouseY > rectY8 && mouseY < rectY8 + rectH8
   ) {
     colorchecker8 = playercolor;
-    rectH8 = 105
-    rectW8 = 105
+
   }
   else if (mouseX > rectx9 && mouseX < rectx9 + rectW9 &&
     mouseY > rectY9 && mouseY < rectY9 + rectH9
   ) {
     colorchecker9 = playercolor;
-    rectH9 = 105
-    rectW9 = 105
+
   }
+
+
   else {
     colorchecker1 = 255;
     colorchecker2 = 255;
@@ -182,25 +293,8 @@ function handleClick(){
     colorchecker6 = 255;
     colorchecker7 = 255;
     colorchecker8 = 255;
-    colorchecker9 = 255
-    rectH1 = 100
-    rectW1 = 100
-    rectH2 = 100
-    rectW2 = 100
-    rectH3 = 100
-    rectW3 = 100
-    rectH4 = 100
-    rectW4 = 100
-    rectH5 = 100
-    rectW5 = 100
-    rectH6 = 100
-    rectW6 = 100
-    rectH7 = 100
-    rectW7 = 100
-    rectH8 = 100
-    rectW8 = 100
-    rectH9 = 100
-    rectW9 = 100
+    colorchecker9 = 255;
+
 
 
 
