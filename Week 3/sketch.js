@@ -70,6 +70,8 @@ let win_right_bottom_top_red = 0
 let win_diagonal_left_right_red = 0
 let win_diagonal_right_left_red = 0
 let start = 0
+let press_start = "press start"
+
 
 
 function setup() {
@@ -89,7 +91,7 @@ function draw() {
     playercolor = [0, 100, 255]
   }
 
-
+  
 
   if (eigenaar1 == 0) {
     fill(255)
@@ -187,10 +189,23 @@ function draw() {
   rect(rectx9, rectY9, rectW9, rectH9, 10);//right bottom
   fill("yellow");
   rect(rectx10, rectY10, rectW10, rectH10, 10);//reset button
-
-
-
+ 
+ 
+  fill(0)
+  textSize(26)
+  text(press_start,1000,635)
+ if (start == 0){
+  press_start = "press start"
+ }
+ else if (start >=1){
+  press_start = "reset"
+ }
+ 
+ 
 }
+ 
+
+
 
 function mousePressed() {
   if (mouseButton == "left" && mouseX > rectx1 && mouseX < rectx1 + rectW1 &&
