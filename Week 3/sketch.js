@@ -73,8 +73,23 @@ let win_diagonal_left_right_red1 = 5000
 let win_diagonal_left_right_red2 = 5000
 let win_diagonal_right_left_red1 = 5000
 let win_diagonal_right_left_red2 = 5000
-let Bluewins = 5000
-
+let Bluewins1 = 5000
+let Bluewins2 = 5000
+let Bluewins3 = 5000
+let Bluewins4 = 5000
+let Bluewins5 = 5000
+let Bluewins6 = 5000
+let Bluewins7 = 5000
+let Bluewins8 = 5000
+let Redwins1 = 5000
+let Redwins2 = 5000
+let Redwins3 = 5000
+let Redwins4 = 5000
+let Redwins5 = 5000
+let Redwins6 = 5000
+let Redwins7 = 5000
+let Redwins8 = 5000
+let stopgame = 0
 
 let start = 0
 let press_start = "press start"
@@ -90,8 +105,22 @@ function draw() {
   background(playercolor);
   fill(0);
   textSize(26);
-  text("bluewins",Bluewins,100);
-  
+  text("bluewins", Bluewins1, 100);
+  text("bluewins", Bluewins2, 100);
+  text("bluewins", Bluewins3, 100);
+  text("bluewins", Bluewins4, 100);
+  text("bluewins", Bluewins5, 100);
+  text("bluewins", Bluewins6, 100);
+  text("bluewins", Bluewins7, 100);
+  text("bluewins", Bluewins8, 100);
+  text("redwins", Redwins1, 100);
+  text("redwins", Redwins2, 100);
+  text("redwins", Redwins3, 100);
+  text("redwins", Redwins4, 100);
+  text("redwins", Redwins5, 100);
+  text("redwins", Redwins6, 100);
+  text("redwins", Redwins7, 100);
+  text("redwins", Redwins8, 100);
   noStroke();
   rect(475, 200, 400, 400, 10);
   if (playerturn == 2) {
@@ -104,118 +133,175 @@ function draw() {
 
   if (eigenaar1 == 2 && eigenaar2 == 2 && eigenaar3 == 2) {
     win_top_left_right_red = 275
+    Redwins1 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_top_left_right_red = 5000
+    Redwins1 = 5000
+    stopgame = 0
   }
   if (eigenaar4 == 2 && eigenaar5 == 2 && eigenaar6 == 2) {
     win_middle_left_right_red = 400
+    Redwins2 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_middle_left_right_red = 5000
+    Redwins2 = 5000
+    stopgame = 0
   }
   if (eigenaar7 == 2 && eigenaar8 == 2 && eigenaar9 == 2) {
     win_bottom_left_right_red = 525
+    Redwins3 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_bottom_left_right_red = 5000
+    Redwins3 = 5000
+    stopgame = 0
   }
   if (eigenaar1 == 2 && eigenaar4 == 2 && eigenaar7 == 2) {
     win_left_bottom_top_red = 550
+    Redwins4 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_left_bottom_top_red = 5000
+    Redwins4 = 5000
+    stopgame = 0
   }
   if (eigenaar2 == 2 && eigenaar5 == 2 && eigenaar8 == 2) {
     win_middle_bottom_top_red = 670
+    Redwins5 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_middle_bottom_top_red = 5000
+    Redwins5 = 5000
+    stopgame = 0
   }
   if (eigenaar3 == 2 && eigenaar6 == 2 && eigenaar9 == 2) {
     win_right_bottom_top_red = 795
+    Redwins6 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_right_bottom_top_red = 5000
+    Redwins6 = 5000
+    stopgame = 0
   }
   if (eigenaar1 == 2 && eigenaar5 == 2 && eigenaar9 == 2) {
     win_diagonal_left_right_red1 = 500
     win_diagonal_left_right_red2 = 850
+    Redwins7 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_diagonal_left_right_red1 = 5000
     win_diagonal_left_right_red2 = 5000
+    Redwins7 = 5000
+    stopgame = 0
+
   }
   if (eigenaar3 == 2 && eigenaar5 == 2 && eigenaar7 == 2) {
-    win_diagonal_left_right_red1 = 850
-    win_diagonal_left_right_red2 = 500
+    win_diagonal_right_left_red1 = 850
+    win_diagonal_right_left_red2 = 500
+    Redwins8 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_diagonal_right_left_red1 = 5000
     win_diagonal_right_left_red2 = 5000
+    Redwins8 = 5000
+    stopgame = 0
+
   }
-    if (eigenaar1 == 1 && eigenaar2 == 1 && eigenaar3 == 1) {
+  if (eigenaar1 == 1 && eigenaar2 == 1 && eigenaar3 == 1) {
     win_top_left_right_blue = 275
-    Bluewins = 625
+    Bluewins1 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_top_left_right_blue = 5000
-    Bluewins = 5000
+    Bluewins1 = 5000
+    stopgame = 0
   }
   if (eigenaar4 == 1 && eigenaar5 == 1 && eigenaar6 == 1) {
     win_middle_left_right_blue = 400
-     Bluewins = 625
+    Bluewins2 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_middle_left_right_blue = 5000
+    Bluewins2 = 5000
+    stopgame = 0
   }
-  if (eigenaar7 == 1&& eigenaar8 == 1 && eigenaar9 == 1) {
+  if (eigenaar7 == 1 && eigenaar8 == 1 && eigenaar9 == 1) {
     win_bottom_left_right_blue = 525
-     Bluewins = 625
+    Bluewins3 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_bottom_left_right_blue = 5000
+    Bluewins3 = 5000
+    stopgame = 0
   }
   if (eigenaar1 == 1 && eigenaar4 == 1 && eigenaar7 == 1) {
     win_left_bottom_top_blue = 550
-     Bluewins = 625
+    Bluewins4 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_left_bottom_top_blue = 5000
+    Bluewins4 = 5000
+    stopgame = 0
   }
   if (eigenaar2 == 1 && eigenaar5 == 1 && eigenaar8 == 1) {
     win_middle_bottom_top_blue = 670
-     Bluewins = 625
+    Bluewins5 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_middle_bottom_top_blue = 5000
+    Bluewins5 = 5000
+    stopgame = 0
   }
   if (eigenaar3 == 1 && eigenaar6 == 1 && eigenaar9 == 1) {
     win_right_bottom_top_blue = 795
-     Bluewins = 625
+    Bluewins6 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_right_bottom_top_blue = 5000
+    Bluewins6 = 5000
+    stopgame = 0
   }
   if (eigenaar1 == 1 && eigenaar5 == 1 && eigenaar9 == 1) {
     win_diagonal_left_right_blue1 = 500
     win_diagonal_left_right_blue2 = 850
-     Bluewins = 625
+    Bluewins7 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_diagonal_left_right_blue1 = 5000
     win_diagonal_left_right_blue2 = 5000
+    Bluewins7 = 5000
+    stopgame = 0
   }
   if (eigenaar3 == 1 && eigenaar5 == 1 && eigenaar7 == 1) {
-    win_diagonal_left_right_blue1 = 850
-    win_diagonal_left_right_blue2 = 500
-     Bluewins = 625
+    win_diagonal_right_left_blue1 = 850
+    win_diagonal_right_left_blue2 = 500
+    Bluewins8 = 625
+    stopgame = stopgame + 1
   }
   else {
     win_diagonal_right_left_blue1 = 5000
     win_diagonal_right_left_blue2 = 5000
+    Bluewins8 = 5000
+    stopgame = 0
   }
-  
+
 
   if (eigenaar1 == 0) {
     fill(255)
@@ -352,48 +438,48 @@ function draw() {
 
 function mousePressed() {
   if (mouseButton == "left" && mouseX > rectx1 && mouseX < rectx1 + rectW1 &&
-    mouseY > rectY1 && mouseY < rectY1 + rectH1 && eigenaar1 == 0 && start >= 1) {
+    mouseY > rectY1 && mouseY < rectY1 + rectH1 && eigenaar1 == 0 && start >= 1 && stopgame == 0) {
     handleClick();
   }
   if (mouseButton == "left" && mouseX > rectx2 && mouseX < rectx2 + rectW2 &&
-    mouseY > rectY2 && mouseY < rectY2 + rectH2 && eigenaar2 == 0 && start >= 1) {
+    mouseY > rectY2 && mouseY < rectY2 + rectH2 && eigenaar2 == 0 && start >= 1 && stopgame == 0) {
     handleClick();
 
   }
 
 
   if (mouseButton == "left" && mouseX > rectx3 && mouseX < rectx3 + rectW3 &&
-    mouseY > rectY3 && mouseY < rectY3 + rectH3 && eigenaar3 == 0 && start >= 1) {
+    mouseY > rectY3 && mouseY < rectY3 + rectH3 && eigenaar3 == 0 && start >= 1 && stopgame == 0) {
     handleClick();
 
   }
   if (mouseButton == "left" && mouseX > rectx4 && mouseX < rectx4 + rectW4 &&
-    mouseY > rectY4 && mouseY < rectY4 + rectH4 && eigenaar4 == 0 && start >= 1) {
+    mouseY > rectY4 && mouseY < rectY4 + rectH4 && eigenaar4 == 0 && start >= 1 && stopgame == 0) {
     handleClick();
 
   }
   if (mouseButton == "left" && mouseX > rectx5 && mouseX < rectx5 + rectW5 &&
-    mouseY > rectY5 && mouseY < rectY5 + rectH5 && eigenaar5 == 0 && start >= 1) {
+    mouseY > rectY5 && mouseY < rectY5 + rectH5 && eigenaar5 == 0 && start >= 1 && stopgame == 0) {
     handleClick();
 
   }
   if (mouseButton == "left" && mouseX > rectx6 && mouseX < rectx6 + rectW6 &&
-    mouseY > rectY6 && mouseY < rectY6 + rectH6 && eigenaar6 == 0 && start >= 1) {
+    mouseY > rectY6 && mouseY < rectY6 + rectH6 && eigenaar6 == 0 && start >= 1 && stopgame == 0) {
     handleClick();
 
   }
   if (mouseButton == "left" && mouseX > rectx7 && mouseX < rectx7 + rectW7 &&
-    mouseY > rectY7 && mouseY < rectY7 + rectH7 && eigenaar7 == 0 && start >= 1) {
+    mouseY > rectY7 && mouseY < rectY7 + rectH7 && eigenaar7 == 0 && start >= 1 && stopgame == 0) {
     handleClick();
 
   }
   if (mouseButton == "left" && mouseX > rectx8 && mouseX < rectx8 + rectW8 &&
-    mouseY > rectY8 && mouseY < rectY8 + rectH8 && eigenaar8 == 0 && start >= 1) {
+    mouseY > rectY8 && mouseY < rectY8 + rectH8 && eigenaar8 == 0 && start >= 1 && stopgame == 0) {
     handleClick();
 
   }
   if (mouseButton == "left" && mouseX > rectx9 && mouseX < rectx9 + rectW9 &&
-    mouseY > rectY9 && mouseY < rectY9 + rectH9 && eigenaar9 == 0 && start >= 1) {
+    mouseY > rectY9 && mouseY < rectY9 + rectH9 && eigenaar9 == 0 && start >= 1 && stopgame == 0) {
     handleClick();
   }
   if (mouseButton == "left" && mouseX > rectx10 && mouseX < rectx10 + rectW10 &&
