@@ -90,7 +90,10 @@ let Redwins6 = 5000
 let Redwins7 = 5000
 let Redwins8 = 5000
 let stopgame = 0
-
+let winner_red = 0
+let winner_blue = 0
+let redhaswon = false
+let bluehaswon = false
 let start = 0
 let press_start = "press start"
 
@@ -103,8 +106,14 @@ function setup() {
 
 function draw() {
   background(playercolor);
-  fill(0);
+  noStroke();
   textSize(26);
+  text("wins red:", 90, 600);
+  text("wins blue:", 79, 575);
+  text(winner_red, 200, 600);
+  text(winner_blue, 200, 575);
+  fill(0);
+  stroke(255)
   text("bluewins", Bluewins1, 100);
   text("bluewins", Bluewins2, 100);
   text("bluewins", Bluewins3, 100);
@@ -135,73 +144,107 @@ function draw() {
     win_top_left_right_red = 275
     Redwins1 = 625
     stopgame = stopgame + 1
+
+
   }
   else {
     win_top_left_right_red = 5000
     Redwins1 = 5000
-    stopgame = 0
+
   }
+  if (eigenaar1 == 2 && eigenaar2 == 2 && eigenaar3 == 2 && !redhaswon ||
+    eigenaar4 == 2 && eigenaar5 == 2 && eigenaar6 == 2 && !redhaswon ||
+    eigenaar7 == 2 && eigenaar8 == 2 && eigenaar9 == 2 && !redhaswon ||
+    eigenaar1 == 2 && eigenaar4 == 2 && eigenaar7 == 2 && !redhaswon ||
+    eigenaar2 == 2 && eigenaar5 == 2 && eigenaar8 == 2 && !redhaswon ||
+    eigenaar3 == 2 && eigenaar6 == 2 && eigenaar9 == 2 && !redhaswon ||
+    eigenaar1 == 2 && eigenaar5 == 2 && eigenaar9 == 2 && !redhaswon ||
+    eigenaar3 == 2 && eigenaar5 == 2 && eigenaar7 == 2 && !redhaswon) {
+    winner_red = winner_red + 1
+    redhaswon = true
+  }
+  if (eigenaar1 == 1 && eigenaar2 == 1 && eigenaar3 == 1 && !bluehaswon ||
+    eigenaar4 == 1 && eigenaar5 == 1 && eigenaar6 == 1 && !bluehaswon ||
+    eigenaar7 == 1 && eigenaar8 == 1 && eigenaar9 == 1 && !bluehaswon ||
+    eigenaar1 == 1 && eigenaar4 == 1 && eigenaar7 == 1 && !bluehaswon ||
+    eigenaar2 == 1 && eigenaar5 == 1 && eigenaar8 == 1 && !bluehaswon ||
+    eigenaar3 == 1 && eigenaar6 == 1 && eigenaar9 == 1 && !bluehaswon ||
+    eigenaar1 == 1 && eigenaar5 == 1 && eigenaar9 == 1 && !bluehaswon ||
+    eigenaar3 == 1 && eigenaar5 == 1 && eigenaar7 == 1 && !bluehaswon) {
+    winner_blue = winner_blue + 1
+    bluehaswon = true
+  }
+
+
   if (eigenaar4 == 2 && eigenaar5 == 2 && eigenaar6 == 2) {
     win_middle_left_right_red = 400
     Redwins2 = 625
     stopgame = stopgame + 1
+
   }
   else {
     win_middle_left_right_red = 5000
     Redwins2 = 5000
-    stopgame = 0
+
   }
   if (eigenaar7 == 2 && eigenaar8 == 2 && eigenaar9 == 2) {
     win_bottom_left_right_red = 525
     Redwins3 = 625
     stopgame = stopgame + 1
+
   }
   else {
     win_bottom_left_right_red = 5000
     Redwins3 = 5000
-    stopgame = 0
+
   }
   if (eigenaar1 == 2 && eigenaar4 == 2 && eigenaar7 == 2) {
     win_left_bottom_top_red = 550
     Redwins4 = 625
     stopgame = stopgame + 1
+
+
   }
   else {
     win_left_bottom_top_red = 5000
     Redwins4 = 5000
-    stopgame = 0
+
   }
   if (eigenaar2 == 2 && eigenaar5 == 2 && eigenaar8 == 2) {
     win_middle_bottom_top_red = 670
     Redwins5 = 625
     stopgame = stopgame + 1
+
   }
   else {
     win_middle_bottom_top_red = 5000
     Redwins5 = 5000
-    stopgame = 0
+
   }
   if (eigenaar3 == 2 && eigenaar6 == 2 && eigenaar9 == 2) {
     win_right_bottom_top_red = 795
     Redwins6 = 625
     stopgame = stopgame + 1
+
+
   }
   else {
     win_right_bottom_top_red = 5000
     Redwins6 = 5000
-    stopgame = 0
+
   }
   if (eigenaar1 == 2 && eigenaar5 == 2 && eigenaar9 == 2) {
     win_diagonal_left_right_red1 = 500
     win_diagonal_left_right_red2 = 850
     Redwins7 = 625
     stopgame = stopgame + 1
+
   }
   else {
     win_diagonal_left_right_red1 = 5000
     win_diagonal_left_right_red2 = 5000
     Redwins7 = 5000
-    stopgame = 0
+
 
   }
   if (eigenaar3 == 2 && eigenaar5 == 2 && eigenaar7 == 2) {
@@ -209,12 +252,13 @@ function draw() {
     win_diagonal_right_left_red2 = 500
     Redwins8 = 625
     stopgame = stopgame + 1
+
   }
   else {
     win_diagonal_right_left_red1 = 5000
     win_diagonal_right_left_red2 = 5000
     Redwins8 = 5000
-    stopgame = 0
+
 
   }
   if (eigenaar1 == 1 && eigenaar2 == 1 && eigenaar3 == 1) {
@@ -225,7 +269,7 @@ function draw() {
   else {
     win_top_left_right_blue = 5000
     Bluewins1 = 5000
-    stopgame = 0
+
   }
   if (eigenaar4 == 1 && eigenaar5 == 1 && eigenaar6 == 1) {
     win_middle_left_right_blue = 400
@@ -235,7 +279,7 @@ function draw() {
   else {
     win_middle_left_right_blue = 5000
     Bluewins2 = 5000
-    stopgame = 0
+
   }
   if (eigenaar7 == 1 && eigenaar8 == 1 && eigenaar9 == 1) {
     win_bottom_left_right_blue = 525
@@ -245,7 +289,7 @@ function draw() {
   else {
     win_bottom_left_right_blue = 5000
     Bluewins3 = 5000
-    stopgame = 0
+
   }
   if (eigenaar1 == 1 && eigenaar4 == 1 && eigenaar7 == 1) {
     win_left_bottom_top_blue = 550
@@ -255,7 +299,7 @@ function draw() {
   else {
     win_left_bottom_top_blue = 5000
     Bluewins4 = 5000
-    stopgame = 0
+
   }
   if (eigenaar2 == 1 && eigenaar5 == 1 && eigenaar8 == 1) {
     win_middle_bottom_top_blue = 670
@@ -265,7 +309,7 @@ function draw() {
   else {
     win_middle_bottom_top_blue = 5000
     Bluewins5 = 5000
-    stopgame = 0
+
   }
   if (eigenaar3 == 1 && eigenaar6 == 1 && eigenaar9 == 1) {
     win_right_bottom_top_blue = 795
@@ -275,7 +319,7 @@ function draw() {
   else {
     win_right_bottom_top_blue = 5000
     Bluewins6 = 5000
-    stopgame = 0
+
   }
   if (eigenaar1 == 1 && eigenaar5 == 1 && eigenaar9 == 1) {
     win_diagonal_left_right_blue1 = 500
@@ -287,7 +331,7 @@ function draw() {
     win_diagonal_left_right_blue1 = 5000
     win_diagonal_left_right_blue2 = 5000
     Bluewins7 = 5000
-    stopgame = 0
+
   }
   if (eigenaar3 == 1 && eigenaar5 == 1 && eigenaar7 == 1) {
     win_diagonal_right_left_blue1 = 850
@@ -299,7 +343,7 @@ function draw() {
     win_diagonal_right_left_blue1 = 5000
     win_diagonal_right_left_blue2 = 5000
     Bluewins8 = 5000
-    stopgame = 0
+
   }
 
 
@@ -487,6 +531,10 @@ function mousePressed() {
     reset = reset + 1
     if (reset == 2) {
       reset = 0
+      stopgame = 0
+      redhaswon = false
+      bluehaswon = false
+      start = 1
     }
     eigenaar1 = 0;
     eigenaar2 = 0;
