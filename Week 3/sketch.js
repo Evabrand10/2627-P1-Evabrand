@@ -59,8 +59,10 @@ let win_bottom_left_right_blue = 5000
 let win_left_bottom_top_blue = 5000
 let win_middle_bottom_top_blue = 5000
 let win_right_bottom_top_blue = 5000
-let win_diagonal_left_right_blue = 5000
-let win_diagonal_right_left_blue = 5000
+let win_diagonal_left_right_blue1 = 5000
+let win_diagonal_right_left_blue2 = 5000
+let win_diagonal_right_left_blue1 = 5000
+let win_diagonal_left_right_blue2 = 5000
 let win_top_left_right_red = 5000
 let win_middle_left_right_red = 5000
 let win_bottom_left_right_red = 5000
@@ -71,6 +73,7 @@ let win_diagonal_left_right_red1 = 5000
 let win_diagonal_left_right_red2 = 5000
 let win_diagonal_right_left_red1 = 5000
 let win_diagonal_right_left_red2 = 5000
+let Bluewins = 5000
 
 
 let start = 0
@@ -86,6 +89,9 @@ function setup() {
 function draw() {
   background(playercolor);
   fill(0);
+  textSize(26);
+  text("bluewins",Bluewins,100);
+  
   noStroke();
   rect(475, 200, 400, 400, 10);
   if (playerturn == 2) {
@@ -148,6 +154,68 @@ function draw() {
     win_diagonal_right_left_red1 = 5000
     win_diagonal_right_left_red2 = 5000
   }
+    if (eigenaar1 == 1 && eigenaar2 == 1 && eigenaar3 == 1) {
+    win_top_left_right_blue = 275
+    Bluewins = 625
+  }
+  else {
+    win_top_left_right_blue = 5000
+    Bluewins = 5000
+  }
+  if (eigenaar4 == 1 && eigenaar5 == 1 && eigenaar6 == 1) {
+    win_middle_left_right_blue = 400
+     Bluewins = 625
+  }
+  else {
+    win_middle_left_right_blue = 5000
+  }
+  if (eigenaar7 == 1&& eigenaar8 == 1 && eigenaar9 == 1) {
+    win_bottom_left_right_blue = 525
+     Bluewins = 625
+  }
+  else {
+    win_bottom_left_right_blue = 5000
+  }
+  if (eigenaar1 == 1 && eigenaar4 == 1 && eigenaar7 == 1) {
+    win_left_bottom_top_blue = 550
+     Bluewins = 625
+  }
+  else {
+    win_left_bottom_top_blue = 5000
+  }
+  if (eigenaar2 == 1 && eigenaar5 == 1 && eigenaar8 == 1) {
+    win_middle_bottom_top_blue = 670
+     Bluewins = 625
+  }
+  else {
+    win_middle_bottom_top_blue = 5000
+  }
+  if (eigenaar3 == 1 && eigenaar6 == 1 && eigenaar9 == 1) {
+    win_right_bottom_top_blue = 795
+     Bluewins = 625
+  }
+  else {
+    win_right_bottom_top_blue = 5000
+  }
+  if (eigenaar1 == 1 && eigenaar5 == 1 && eigenaar9 == 1) {
+    win_diagonal_left_right_blue1 = 500
+    win_diagonal_left_right_blue2 = 850
+     Bluewins = 625
+  }
+  else {
+    win_diagonal_left_right_blue1 = 5000
+    win_diagonal_left_right_blue2 = 5000
+  }
+  if (eigenaar3 == 1 && eigenaar5 == 1 && eigenaar7 == 1) {
+    win_diagonal_left_right_blue1 = 850
+    win_diagonal_left_right_blue2 = 500
+     Bluewins = 625
+  }
+  else {
+    win_diagonal_right_left_blue1 = 5000
+    win_diagonal_right_left_blue2 = 5000
+  }
+  
 
   if (eigenaar1 == 0) {
     fill(255)
@@ -259,7 +327,7 @@ function draw() {
   stroke(255);
   strokeWeight(10)
   line(400, win_top_left_right_red, 950, win_top_left_right_red);
-  line(400, win_top_left_right_blue, 950, win_top_left_right_blue);
+  line(400, win_top_left_right_red, 950, win_top_left_right_red);
   line(400, win_middle_left_right_red, 950, win_middle_left_right_red);
   line(400, win_bottom_left_right_red, 950, win_bottom_left_right_red);
   line(win_left_bottom_top_red, 200, win_left_bottom_top_red, 600);
@@ -267,6 +335,16 @@ function draw() {
   line(win_right_bottom_top_red, 200, win_right_bottom_top_red, 600);
   line(win_diagonal_left_right_red1, 225, win_diagonal_left_right_red2, 575)
   line(win_diagonal_right_left_red1, 225, win_diagonal_right_left_red2, 575)
+
+  line(400, win_top_left_right_blue, 950, win_top_left_right_blue);
+  line(400, win_top_left_right_blue, 950, win_top_left_right_blue);
+  line(400, win_middle_left_right_blue, 950, win_middle_left_right_blue);
+  line(400, win_bottom_left_right_blue, 950, win_bottom_left_right_blue);
+  line(win_left_bottom_top_blue, 200, win_left_bottom_top_blue, 600);
+  line(win_middle_bottom_top_blue, 200, win_middle_bottom_top_blue, 600);
+  line(win_right_bottom_top_blue, 200, win_right_bottom_top_blue, 600);
+  line(win_diagonal_left_right_blue1, 225, win_diagonal_left_right_blue2, 575)
+  line(win_diagonal_right_left_blue1, 225, win_diagonal_right_left_blue2, 575)
 }
 
 
