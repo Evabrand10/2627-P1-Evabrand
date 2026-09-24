@@ -529,7 +529,7 @@ function mousePressed() {
   if (mouseButton == "left" && mouseX > rectx10 && mouseX < rectx10 + rectW10 &&
     mouseY > rectY10 && mouseY < rectY10 + rectH10) {
     reset = reset + 1
-    if (reset == 2) {
+    if (reset == 1) {
       reset = 0
       stopgame = 0
       redhaswon = false
