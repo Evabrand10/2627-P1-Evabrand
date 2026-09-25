@@ -96,6 +96,7 @@ let redhaswon = false
 let bluehaswon = false
 let start = 0
 let press_start = "press start"
+let draw1 = 5000
 
 
 
@@ -112,8 +113,10 @@ function draw() {
   text("wins blue:", 79, 575);
   text(winner_red, 200, 600);
   text(winner_blue, 200, 575);
+
   fill(0);
   stroke(255)
+  text("draw", draw1, 100);
   text("bluewins", Bluewins1, 100);
   text("bluewins", Bluewins2, 100);
   text("bluewins", Bluewins3, 100);
@@ -130,16 +133,41 @@ function draw() {
   text("redwins", Redwins6, 100);
   text("redwins", Redwins7, 100);
   text("redwins", Redwins8, 100);
+  // shows who won
   noStroke();
   rect(475, 200, 400, 400, 10);
   if (playerturn == 2) {
     playercolor = [255, 0, 0]
   }
-
+// changes the color of whos turn it is to red
   else if (playerturn == 1) {
     playercolor = [0, 100, 255]
   }
-
+  // changes the color of whos turn it is to blue
+if (eigenaar1 == 2 && eigenaar2 == 2 && eigenaar3 == 2 && !redhaswon ||
+    eigenaar4 == 2 && eigenaar5 == 2 && eigenaar6 == 2 && !redhaswon ||
+    eigenaar7 == 2 && eigenaar8 == 2 && eigenaar9 == 2 && !redhaswon ||
+    eigenaar1 == 2 && eigenaar4 == 2 && eigenaar7 == 2 && !redhaswon ||
+    eigenaar2 == 2 && eigenaar5 == 2 && eigenaar8 == 2 && !redhaswon ||
+    eigenaar3 == 2 && eigenaar6 == 2 && eigenaar9 == 2 && !redhaswon ||
+    eigenaar1 == 2 && eigenaar5 == 2 && eigenaar9 == 2 && !redhaswon ||
+    eigenaar3 == 2 && eigenaar5 == 2 && eigenaar7 == 2 && !redhaswon) {
+    winner_red = winner_red + 1
+    redhaswon = true
+  }
+  // win counter for red
+  if (eigenaar1 == 1 && eigenaar2 == 1 && eigenaar3 == 1 && !bluehaswon ||
+    eigenaar4 == 1 && eigenaar5 == 1 && eigenaar6 == 1 && !bluehaswon ||
+    eigenaar7 == 1 && eigenaar8 == 1 && eigenaar9 == 1 && !bluehaswon ||
+    eigenaar1 == 1 && eigenaar4 == 1 && eigenaar7 == 1 && !bluehaswon ||
+    eigenaar2 == 1 && eigenaar5 == 1 && eigenaar8 == 1 && !bluehaswon ||
+    eigenaar3 == 1 && eigenaar6 == 1 && eigenaar9 == 1 && !bluehaswon ||
+    eigenaar1 == 1 && eigenaar5 == 1 && eigenaar9 == 1 && !bluehaswon ||
+    eigenaar3 == 1 && eigenaar5 == 1 && eigenaar7 == 1 && !bluehaswon) {
+    winner_blue = winner_blue + 1
+    bluehaswon = true
+  }
+ // win counter for blue
   if (eigenaar1 == 2 && eigenaar2 == 2 && eigenaar3 == 2) {
     win_top_left_right_red = 275
     Redwins1 = 625
@@ -152,30 +180,7 @@ function draw() {
     Redwins1 = 5000
 
   }
-  if (eigenaar1 == 2 && eigenaar2 == 2 && eigenaar3 == 2 && !redhaswon ||
-    eigenaar4 == 2 && eigenaar5 == 2 && eigenaar6 == 2 && !redhaswon ||
-    eigenaar7 == 2 && eigenaar8 == 2 && eigenaar9 == 2 && !redhaswon ||
-    eigenaar1 == 2 && eigenaar4 == 2 && eigenaar7 == 2 && !redhaswon ||
-    eigenaar2 == 2 && eigenaar5 == 2 && eigenaar8 == 2 && !redhaswon ||
-    eigenaar3 == 2 && eigenaar6 == 2 && eigenaar9 == 2 && !redhaswon ||
-    eigenaar1 == 2 && eigenaar5 == 2 && eigenaar9 == 2 && !redhaswon ||
-    eigenaar3 == 2 && eigenaar5 == 2 && eigenaar7 == 2 && !redhaswon) {
-    winner_red = winner_red + 1
-    redhaswon = true
-  }
-  if (eigenaar1 == 1 && eigenaar2 == 1 && eigenaar3 == 1 && !bluehaswon ||
-    eigenaar4 == 1 && eigenaar5 == 1 && eigenaar6 == 1 && !bluehaswon ||
-    eigenaar7 == 1 && eigenaar8 == 1 && eigenaar9 == 1 && !bluehaswon ||
-    eigenaar1 == 1 && eigenaar4 == 1 && eigenaar7 == 1 && !bluehaswon ||
-    eigenaar2 == 1 && eigenaar5 == 1 && eigenaar8 == 1 && !bluehaswon ||
-    eigenaar3 == 1 && eigenaar6 == 1 && eigenaar9 == 1 && !bluehaswon ||
-    eigenaar1 == 1 && eigenaar5 == 1 && eigenaar9 == 1 && !bluehaswon ||
-    eigenaar3 == 1 && eigenaar5 == 1 && eigenaar7 == 1 && !bluehaswon) {
-    winner_blue = winner_blue + 1
-    bluehaswon = true
-  }
-
-
+  
   if (eigenaar4 == 2 && eigenaar5 == 2 && eigenaar6 == 2) {
     win_middle_left_right_red = 400
     Redwins2 = 625
@@ -345,7 +350,7 @@ function draw() {
     Bluewins8 = 5000
 
   }
-
+// makes the lines appear when some one wins
 
   if (eigenaar1 == 0) {
     fill(255)
@@ -379,7 +384,7 @@ function draw() {
   else if (eigenaar3 == 2) {
     fill("red");
   }
-
+// makes the squares red or blue depending on whos turn it is
   rect(rectx3, rectY3, rectW3, rectH3, 10);// right top
   if (eigenaar4 == 0) {
     fill(255)
@@ -444,7 +449,7 @@ function draw() {
   fill("yellow");
   rect(rectx10, rectY10, rectW10, rectH10, 10);//reset button
 
-
+  // all the player squares
   fill(0)
   textSize(26)
   text(press_start, 1000, 635)
@@ -453,6 +458,7 @@ function draw() {
   }
   else if (start >= 1) {
     press_start = "reset"
+    // turns press start into reset
   }
   stroke(255);
   strokeWeight(10)
@@ -475,6 +481,15 @@ function draw() {
   line(win_right_bottom_top_blue, 200, win_right_bottom_top_blue, 600);
   line(win_diagonal_left_right_blue1, 225, win_diagonal_left_right_blue2, 575)
   line(win_diagonal_right_left_blue1, 225, win_diagonal_right_left_blue2, 575)
+  //winner lines
+  if (eigenaar1 >= 1 && eigenaar2 >= 1 &&
+    eigenaar3 >= 1 && eigenaar4 >= 1 && eigenaar5 >= 1 &&
+    eigenaar6 >= 1 && eigenaar7 >= 1 && eigenaar8 >= 1 &&
+    eigenaar9 >= 1 && stopgame == 0) {
+    draw1 = 625
+  }
+  //makes show there is a draw
+  
 }
 
 
@@ -535,6 +550,8 @@ function mousePressed() {
       redhaswon = false
       bluehaswon = false
       start = 1
+      draw1 = 5000
+      //reset/start knop
     }
     eigenaar1 = 0;
     eigenaar2 = 0;
