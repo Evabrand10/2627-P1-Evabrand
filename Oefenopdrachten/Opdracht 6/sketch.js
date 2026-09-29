@@ -1,6 +1,12 @@
+let randomKleuren = []
+
 
 function setup() {
-  createCanvas(380, 600);
+  createCanvas(380, 380);
+  for (let i = 0; i < 5; i++) {
+    randomKleuren.push([random(255), random(255), random(255)])
+    
+  }
 }
 
 function draw() {
@@ -74,5 +80,10 @@ function draw() {
   for (let i = 0; i < kleuren.length; i++) {
     fill(kleuren[i]);
     text(kleuren[i], 120, 200 + (i * 10));
+  }
+   
+   for(let i =0; i< randomKleuren.length; i++){
+   fill(randomKleuren[i])
+    rect(130+ (i*15) , 280,15,15)
   }
 }
