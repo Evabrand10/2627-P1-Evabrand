@@ -1,6 +1,6 @@
 
 function setup() {
-  createCanvas(380, 350);
+  createCanvas(380, 600);
 }
 
 function draw() {
@@ -15,7 +15,7 @@ function draw() {
   text("7", 120, 190);
   text("8", 120, 280);
   text("9", 240, 15);
-  
+
 
   let kleuren = ["red", "green", "blue", "purple", "yellow"];
   for (let i = 0; i < kleuren.length; i++) {
@@ -29,7 +29,7 @@ function draw() {
     fill(kleuren[i]);
     text(kleuren[i], 20, 110 + (i * 10));
 
-  } 
+  }
 
   kleuren.splice(1, 2);
   for (let i = 0; i < kleuren.length; i++) {
@@ -38,21 +38,41 @@ function draw() {
 
   }
   let numbers = ["400", "240", "10", "490", "30", "60", "244", "500", "301", "300"];
-  
+
   let teller = 0;
   for (let i = 0; i < numbers.length; i++) {
-   fill(0);
-   if(numbers[i] < 300){
-     text(numbers[i], 20, 260 + (teller * 10));
-     teller++;
-     
+    fill(0);
+    if (numbers[i] < 300) {
+      text(numbers[i], 20, 260 + (teller * 10));
+      teller++;
     }
 
+  }
+  let optellen1 = [3, 55, 93, 20, 102, 6];
+  let optellen2 = [14, 22, 80, 5];
+  let uitkomst1 = 0;
+  for (let i = 0; i < 6; i++) {
+    uitkomst1 += optellen1[i];
 
-   
-
-   
-    
+    if (i < optellen2.length) {
+      uitkomst1 += optellen2[i];
+    }
   }
 
+  text(uitkomst1, 120, 25);
+  let Overheidsfinancieringstekort = "Overheidsfinancieringstekort"
+  let Ecounter = 0;
+  for (let i = 0; i < Overheidsfinancieringstekort.length; i++) {
+    if (Overheidsfinancieringstekort[i] == "e") {
+      Ecounter += 1
+    }
+
+  }
+  text(Ecounter, 120, 110);
+  kleuren = ["red", "green", "blue", "purple", "yellow"];
+  sort(kleuren)
+  for (let i = 0; i < kleuren.length; i++) {
+    fill(kleuren[i]);
+    text(kleuren[i], 120, 200 + (i * 10));
+  }
 }
