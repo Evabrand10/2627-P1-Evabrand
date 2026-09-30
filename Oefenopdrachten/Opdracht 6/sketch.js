@@ -7,12 +7,12 @@ function setup() {
   createCanvas(380, 380);
   for (let i = 0; i < 5; i++) {
     randomKleuren.push([random(255), random(255), random(255)])
- 
+
 
   }
-   for (let i = 0; i < 12; i++) {
-      getallen.push(round(random(0, 100)))
-}
+  for (let i = 0; i < 12; i++) {
+    getallen.push(round(random(0, 100)))
+  }
 }
 
 function draw() {
@@ -92,11 +92,19 @@ function draw() {
     fill(randomKleuren[i])
     rect(130 + (i * 15), 280, 15, 15)
   }
+  let uitkomst = 0;
+  let gemiddelde = 0;
   for (let i = 0; i < 12; i++) {
-   let totaal = 
+    if (i < getallen.length) {
+      uitkomst += getallen[i]
+    }
+    gemiddelde =  uitkomst / 12
     fill(0);
     text(getallen[i], 240, 25 + (i * 10));
-    text(totaal,240,200)
   }
+  text(uitkomst, 240, 150);
+  text(gemiddelde, 240, 160);
+  text("uitkomst:", 190, 150);
+  text("gem:", 210, 160);
 
 }
