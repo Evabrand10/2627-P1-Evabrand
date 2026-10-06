@@ -1,34 +1,34 @@
-let startshow = 0
-let rectstartcords = [345,260,100,50]
 
-let hovereffect = 255
-
+let rectstartcords = [345, 260, 100, 50]
+let quizslide = 0
+let startButton;
 
 function setup() {
   createCanvas(800, 600);
-  let button = createButton("Start");
-  button.position (345,260)
-  button.style(hovereffect);
-  button.style(50)
-  button.mousePressed(click)
-}
-function click(){
-  console.log("toppie")
 }
 
 function draw() {
   background(220);
+  startButton = createButton("Start");
+  startButton.position(345, 300)
+  startButton.size(100, 60);
+  startButton.mousePressed(click)
+  startButton.style("font-size", "40px")
 
- 
+
+
+
+  if (quizslide == 1) {
+    startx = 5000
+  }
+
 }
 
-function mouseHover(){
-  if (mouseX > rectstartcords[0] && mouseX < rectstartcords[0] + rectstartcords[2] &&
-    mouseY > rectstartcords[1] && mouseY < rectstartcords[1] + rectstartcords[3]){
+function click() {
+  quizslide += 1
+  startButton.hide();
+}
 
-    hovereffect = 220
-    }
-    else{
-      hovereffect = 255
-    }
-  }
+
+
+
