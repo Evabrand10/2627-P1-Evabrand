@@ -95,7 +95,9 @@ let awnsertext = []
 let awnsercolor = "white";
 let loadimage = 0
 let questionTimer = 0;
-let points = 0
+let score = 0
+let lastScored = -1
+let totalQuestions = questions.length - 1 
 
 
 
@@ -143,14 +145,18 @@ function setup() {
   startButton.size(100, 60);
   startButton.mousePressed(startClick)
   startButton.style("font-size", "40px")
-
+ for (let i = 0; i < answerButtons.length; i++) {
+    answerButtons[i].elt.addEventListener("click", function () {
+      scoreAnswer(i);
+    });
+  }
 }
 
 function draw() {
   background(220);
   textSize(questionsize);
   text(quizquestion, questionx, 200)
-  text(points,100,100)
+
 
   // Pak de image van de vraag en ALS ie bestaat, laat zien op het scherm
   let currentImage = questions[currentQuestion].imagePath;
@@ -182,7 +188,19 @@ function draw() {
 
     }
   }
-
+if (currentQuestion >= totalQuestions) {
+    for (let i = 0; i < answerButtons.length; i++) {
+      answerButtons[i].hide();
+    }
+    background(220);
+    push();
+    textAlign(CENTER);
+    textSize(46);
+    text("Quiz klaar!", 400, 200);
+    textSize(32);
+    text("Score: " + score + " / " + totalQuestions, 400, 280);
+    pop();
+  }
 }
 
 function resetAllButtonColors() {
@@ -216,10 +234,7 @@ function clickA() {
   }
 
   questionTimer = 100;
-  if (correctAnswer == 0) {
-   points = points + 1
-
-  }
+ 
 
 }
 function clickB() {
@@ -244,10 +259,7 @@ function clickB() {
   }
 
   questionTimer = 100;
-  if (correctAnswer == 1) {
-     points = points + 1
-  }
- 
+
 }
 function clickC() {
   if (questionTimer > 0) {
@@ -272,10 +284,7 @@ function clickC() {
   }
 
   questionTimer = 100;
-  if (correctAnswer == 2) {
-    points = points + 1
-  }
-  console.log(points);
+
 }
 function clickD() {
   if (questionTimer > 0) {
@@ -299,10 +308,7 @@ function clickD() {
   }
 
   questionTimer = 100;
-  if (correctAnswer == 3) {
-    points = points + 1
-  }
-  console.log(points);
+
 }
 function startClick() {
   //startButton.hide();
@@ -336,5 +342,11 @@ function preload() {
   }
 }
 
-
+function scoreAnswer(i) {
+  if (lastScored === currentQuestion) return;
+  lastScored = currentQuestion;
+  if (i === questions[currentQuestion].correctAnswer) {
+    score = score + 1;
+  }
+}
 
