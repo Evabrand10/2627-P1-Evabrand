@@ -1,15 +1,19 @@
-let imagbackground
+let imagbackground;
 let backgroundaxis = [1000,700]
 let backgroundstatus  = ["Thousand_sunny_kitchen.png","Thousand_sunny_sick_bay.png","Thousand_sunny_maindeck.jpg"]
-
+let luffyappearance = ["luffy idle.png"]
+let luffy;
 function setup() {
   createCanvas(backgroundaxis[0], backgroundaxis[1]);
 }
 
 function draw() {
   background(220);
-  image (imagbackground,0,0,backgroundaxis[0], backgroundaxis[1])
+  image (imagbackground,0,0,backgroundaxis[0], backgroundaxis[1]);
+  image(luffy,250,190,500,500)
 }
 function preload(){
-  imagbackground = loadImage(backgroundstatus[2])
+  imagbackground = loadImage(backgroundstatus[2]);
+  luffy = loadImage(luffyappearance[0]);
+ 
 }
