@@ -8,6 +8,7 @@ let buttonsleep;
 let buttonoutside;
 let currentbackground = 1
 let luffyhealth;
+let luffyenergy;
 
 function setup() {
   createCanvas(backgroundaxis[0], backgroundaxis[1]);
@@ -30,7 +31,8 @@ function draw() {
   image(backgroundImages[currentbackground], 0, 0, backgroundaxis[0], backgroundaxis[1]);
   image(luffy, 250, 190, 500, 500)
  for (let i = 0; i < 5; i++) {
-  image(luffyhealth,900 - (i*40),50,85,60)
+  image(luffyhealth,900 - (i*40),50,85,60);
+  image(luffyenergy,900 - (i*40),100,85,60);
  }
 }
 function preload() {
@@ -42,6 +44,7 @@ function preload() {
 
   luffy = loadImage(luffyappearance[0]);
   luffyhealth = loadImage("luffyheart.png")
+  luffyenergy = loadImage("energylogoluffy.png")
 
 }
 function sleepbutton(){
