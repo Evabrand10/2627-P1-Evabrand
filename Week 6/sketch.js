@@ -18,7 +18,8 @@ let luffyhungerspeed = 0.1;
 let luffyheatlhspeed = 0.1;
 let luffyenergyspeed = 0.053;
 let luffyhealthspeed = 0.7;
-let luffyx
+let luffyx = 250
+let luffyinbed = false
 
 
 function setup() {
@@ -60,7 +61,7 @@ function draw() {
     luffyenergystatus = 5
   }
   image(backgroundImages[currentbackground], 0, 0, backgroundaxis[0], backgroundaxis[1]);
-  image(luffy, 250, 190, 500, 500)
+  image(luffy, luffyx, 190, 500, 500)
   for (let i = 0; i < luffyhealthstatus; i++) {
     image(luffyhealth, 900 - (i * 40), 50, 85, 60);
   }
@@ -97,6 +98,5 @@ function outsidebutton() {
   currentbackground = 2
 }
 function luffysleep(){
-  currentbackground = 3
-  luffyenergystatus = luffyenergystatus + deltaTime * 0.01 
+  
 }
