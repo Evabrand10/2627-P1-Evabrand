@@ -37,7 +37,7 @@ function setup() {
   buttonsleep.size(100, 40);
   buttonsleep.mousePressed(sleepbutton);
   buttonluffysleep = createButton("enter bed");
-  buttonluffysleep.position(900, 400);
+  buttonluffysleep.position(850, 330);
   buttonluffysleep.size(100, 40);
   buttonluffysleep.mousePressed(luffysleep);
 }
@@ -55,7 +55,7 @@ function draw() {
     luffyhungerspeed = 0.5
   }
   else {
-    luffyhungerspeed = 0,1
+    luffyhungerspeed = 0.1
   }
   if (luffyenergystatus >= 5){
     luffyenergystatus = 5
@@ -71,9 +71,17 @@ function draw() {
   for (let i = 0; i < luffyfoodstatus; i++) {
     image(luffyfood, 920 - (i * 40), 150, 45, 60)
   }
-  if(currentbackground == 3){
-
+  if(currentbackground == 1){
+  buttonluffysleep.show();
   }
+  else buttonluffysleep.hide(); 
+  if(luffyinbed == true){
+    luffyenergystatus = luffyenergystatus + deltaTime * 0.01 * luffyenergyspeed;
+  }
+  else{
+  luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
+  }
+  
 }
 function preload() {
   for (let i = 0; i < backgroundPaths.length; i++) {
@@ -90,13 +98,18 @@ function preload() {
 }
 function sleepbutton() {
   currentbackground = 1
+  luffyx = 250
 }
 function foodbutton() {
   currentbackground = 0
+  luffyx = 250
 }
 function outsidebutton() {
   currentbackground = 2
+  luffyx = 250
 }
 function luffysleep(){
-  
+currentbackground = 3
+luffyx = 5000
+luffyinbed  = true
 }
