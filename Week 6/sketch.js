@@ -1,5 +1,5 @@
 let backgroundaxis = [1000, 700]
-let backgroundPaths = ["Thousand_sunny_kitchen.png", "Thousand_sunny_sick_bay.png", "Thousand_sunny_maindeck.jpg","Thousand_sunny_sick_bay_luffy.png"]
+let backgroundPaths = ["Thousand_sunny_kitchen.png", "Thousand_sunny_sick_bay.png", "Thousand_sunny_maindeck.jpg", "Thousand_sunny_sick_bay_luffy.png"]
 let backgroundImages = []
 let luffyappearance = ["luffy idle.png"]
 let luffy;
@@ -7,10 +7,12 @@ let buttonfood;
 let buttonsleep;
 let buttonoutside;
 let buttonluffysleep;
+let luffyoutsidebed;
 let currentbackground = 1
 let luffyhealth;
 let luffyenergy;
 let luffyfood;
+let luffyeating
 let luffyhealthstatus = 5
 let luffyenergystatus = 5
 let luffyfoodstatus = 5;
@@ -40,6 +42,14 @@ function setup() {
   buttonluffysleep.position(850, 330);
   buttonluffysleep.size(100, 40);
   buttonluffysleep.mousePressed(luffysleep);
+  luffyoutsidebed = createButton("exit bed");
+  luffyoutsidebed.position(850, 330);
+  luffyoutsidebed.size(100, 40);
+  luffyoutsidebed.mousePressed(luffyexitbed);
+  luffyeating = createButton("Eat");
+  luffyeating.position(850, 330);
+  luffyeating.size(100, 40);
+  luffyeating.mousePressed(luffyeatingfood);
 }
 
 function draw() {
@@ -57,8 +67,17 @@ function draw() {
   else {
     luffyhungerspeed = 0.1
   }
-  if (luffyenergystatus >= 5){
+  if (luffyenergystatus >= 5) {
     luffyenergystatus = 5
+  }
+  if (luffyfoodstatus >= 5) {
+    luffyfoodstatus = 5
+  }
+  if(currentbackground == 0){
+    luffyeating.show();
+  }
+  else{
+    luffyeating.hide();
   }
   image(backgroundImages[currentbackground], 0, 0, backgroundaxis[0], backgroundaxis[1]);
   image(luffy, luffyx, 190, 500, 500)
@@ -71,17 +90,29 @@ function draw() {
   for (let i = 0; i < luffyfoodstatus; i++) {
     image(luffyfood, 920 - (i * 40), 150, 45, 60)
   }
-  if(currentbackground == 1){
-  buttonluffysleep.show();
+  if (currentbackground == 3) {
+    luffyinbed = true
   }
-  else buttonluffysleep.hide(); 
-  if(luffyinbed == true){
+  else {
+    luffyinbed = false
+  }
+
+  if (currentbackground == 1) {
+    buttonluffysleep.show();
+  }
+  else {
+    buttonluffysleep.hide();
+
+  }
+  if (luffyinbed == true) {
     luffyenergystatus = luffyenergystatus + deltaTime * 0.01 * luffyenergyspeed;
+    luffyoutsidebed.show()
   }
-  else{
-  luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
+  else {
+    luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
+    luffyoutsidebed.hide()
   }
-  
+
 }
 function preload() {
   for (let i = 0; i < backgroundPaths.length; i++) {
@@ -108,8 +139,18 @@ function outsidebutton() {
   currentbackground = 2
   luffyx = 250
 }
-function luffysleep(){
-currentbackground = 3
-luffyx = 5000
-luffyinbed  = true
+function luffysleep() {
+  currentbackground = 3
+  luffyx = 5000
+  luffyinbed = true
+
+}
+function luffyexitbed() {
+  currentbackground = 1
+  luffyx = 250
+  luffyinbed = false
+}
+function luffyeatingfood() {
+  luffyfoodstatus = luffyfoodstatus + 0.8;
+
 }
