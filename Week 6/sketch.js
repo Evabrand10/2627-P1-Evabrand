@@ -1,7 +1,7 @@
 let backgroundaxis = [1000, 700]
 let backgroundPaths = ["Thousand_sunny_kitchen.png", "Thousand_sunny_sick_bay.png", "Thousand_sunny_maindeck.jpg", "Thousand_sunny_sick_bay_luffy.png"]
 let backgroundImages = []
-let luffyappearance = ["luffy idle.png"]
+let luffyappearance = ["luffy idle.png", "Luffydead.png"]
 let luffy;
 let buttonfood;
 let buttonsleep;
@@ -50,13 +50,24 @@ function setup() {
   luffyeating.position(850, 330);
   luffyeating.size(100, 40);
   luffyeating.mousePressed(luffyeatingfood);
+  buttonrespawn = createButton("respawn")
+  buttonrespawn.position(460, 180);
+  buttonrespawn.size(100, 40);
+  buttonrespawn.mousePressed(reset)
+
 }
 
 function draw() {
   background(220);
-
+ 
   luffyfoodstatus = luffyfoodstatus - deltaTime * 0.001 * luffyhungerspeed;
   luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
+  if (luffyhealthstatus <= 0) {
+    buttonrespawn.show();
+  }
+  else {
+    buttonrespawn.hide();
+  }
   if (luffyfoodstatus <= 0) {
     luffyhealthstatus = luffyhealthstatus - deltaTime * 0.001 * luffyhealthspeed
   } // als luffy honger heeft gaat hij langzaam dood
@@ -73,14 +84,20 @@ function draw() {
   if (luffyfoodstatus >= 5) {
     luffyfoodstatus = 5
   }
-  if(currentbackground == 0){
+  if (currentbackground == 0) {
     luffyeating.show();
   }
-  else{
+  else {
     luffyeating.hide();
   }
   image(backgroundImages[currentbackground], 0, 0, backgroundaxis[0], backgroundaxis[1]);
-  image(luffy, luffyx, 190, 500, 500)
+  if (luffyhealthstatus <= 0) {
+    image(luffydead, luffyx, 190, 500, 500)
+  }
+  else {
+    image(luffy, luffyx, 190, 500, 500);
+  }
+
   for (let i = 0; i < luffyhealthstatus; i++) {
     image(luffyhealth, 900 - (i * 40), 50, 85, 60);
   }
@@ -112,7 +129,9 @@ function draw() {
     luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
     luffyoutsidebed.hide()
   }
-
+if(luffyhealthstatus <= 0){
+  buttonluffysleep.hide();
+ }
 }
 function preload() {
   for (let i = 0; i < backgroundPaths.length; i++) {
@@ -122,6 +141,7 @@ function preload() {
   }
 
   luffy = loadImage(luffyappearance[0]);
+  luffydead = loadImage(luffyappearance[1]);
   luffyhealth = loadImage("luffyheart.png")
   luffyenergy = loadImage("energylogoluffy.png")
   luffyfood = loadImage("luffyfood.png")
@@ -152,5 +172,11 @@ function luffyexitbed() {
 }
 function luffyeatingfood() {
   luffyfoodstatus = luffyfoodstatus + 0.8;
+
+}
+function reset() {
+  luffyfoodstatus = 5
+  luffyenergystatus = 5
+  luffyhealthstatus = 5
 
 }
