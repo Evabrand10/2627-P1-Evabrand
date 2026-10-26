@@ -132,6 +132,12 @@ function draw() {
 if(luffyhealthstatus <= 0){
   buttonluffysleep.hide();
  }
+ if(luffyfoodstatus >= 4 && luffyenergystatus >= 4){
+  luffyhealthstatus = luffyhealthstatus + deltaTime * 0.001 * luffyhealthspeed
+ }
+ if(luffyhealthstatus >= 5){
+  luffyhealthstatus = 5
+ }
 }
 function preload() {
   for (let i = 0; i < backgroundPaths.length; i++) {
