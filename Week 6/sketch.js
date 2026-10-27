@@ -9,7 +9,7 @@ let buttonoutside;
 let buttonluffysleep;
 let luffyoutsidebed;
 let buttonsahur;
-let currentbackground = 0
+let currentbackground = 1
 let luffyhealth;
 let luffyenergy;
 let luffyfood;
@@ -27,21 +27,25 @@ let spawnfood = false
 let foodx = 0
 let foody = 0
 let grabfood = false
+let luffytungsahur;
+let sahur = false
+let sahurpressed = 0
+
 
 
 function setup() {
   createCanvas(backgroundaxis[0], backgroundaxis[1]);
-  buttonsahur = createImage("Tungsahur.png")
-  buttonsahur.position(100, 100);
-  buttonsahur.size(100, 40)
-
+  buttonsahur = createImg("Tungsahur.png");
+  buttonsahur.position(190, 505);
+  buttonsahur.size(20, 40);
+  buttonsahur.mousePressed(luffytungtungsahur)
   buttonoutside = createButton("outside");
   buttonoutside.position(100, 100);
-  buttonoutside.size(100, 40)
+  buttonoutside.size(100, 40);
   buttonoutside.mousePressed(outsidebutton)
   buttonfood = createButton("Eat");
   buttonfood.position(100, 150);
-  buttonfood.size(100, 40)
+  buttonfood.size(100, 40);
   buttonfood.mousePressed(foodbutton);
   buttonsleep = createButton("sleep");
   buttonsleep.position(100, 200);
@@ -59,10 +63,10 @@ function setup() {
   luffyeating.position(850, 330);
   luffyeating.size(100, 40);
   luffyeating.mousePressed(luffyeatingfood);
-  buttonrespawn = createButton("respawn")
+  buttonrespawn = createButton("respawn");
   buttonrespawn.position(460, 180);
   buttonrespawn.size(100, 40);
-  buttonrespawn.mousePressed(reset)
+  buttonrespawn.mousePressed(reset);
 
 }
 
@@ -71,6 +75,18 @@ function draw() {
  
   luffyfoodstatus = luffyfoodstatus - deltaTime * 0.001 * luffyhungerspeed;
   luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
+  if(sahurpressed % 2 == 1){
+    sahur = true
+  }
+  else{
+    sahur = false
+  }
+  if(currentbackground == 1){
+    buttonsahur.show();
+  }
+  else{
+    buttonsahur.hide();
+  }
   if (luffyhealthstatus <= 0) {
     buttonrespawn.show();
     
@@ -108,6 +124,10 @@ function draw() {
   if (luffyhealthstatus <= 0) {
     image(luffydead, luffyx, 190, 500, 500)
   }
+  else if(sahur == true){
+    image(luffytungsahur, luffyx, 190, 500, 500)
+  }
+
   else {
     image(luffy, luffyx, 190, 500, 500);
   }
@@ -124,6 +144,7 @@ function draw() {
   if (currentbackground == 3) {
     luffyinbed = true
   }
+ 
   else {
     luffyinbed = false
   }
@@ -157,8 +178,7 @@ if(luffyhealthstatus <= 0){
  if(foodx >= 450 && foodx <=510 && foody >= 260&& foody <=290){
  spawnfood = false
  luffyfoodstatus = luffyfoodstatus + 1
- foodx = 1 
- foody = 1
+ 
  }
 else if(currentbackground !== 0){
   spawnfood = false
@@ -186,7 +206,7 @@ function preload() {
   luffyhealth = loadImage("luffyheart.png")
   luffyenergy = loadImage("energylogoluffy.png")
   luffyfood = loadImage("luffyfood.png")
-
+  luffytungsahur = loadImage("Luffysahur.png")
 }
 function sleepbutton() {
   currentbackground = 1
@@ -213,8 +233,8 @@ function luffyexitbed() {
 }
 function luffyeatingfood() {
  spawnfood = true;
- foodx = random(1000)
- foody = random(600)
+ foodx = random(200,700)
+ foody = random(200,500)
 }
 function reset() {
   luffyfoodstatus = 5
@@ -231,4 +251,7 @@ function mousePressed(){
 
 function mouseReleased(){
   grabfood = false
+}
+function luffytungtungsahur(){
+  sahurpressed += 1
 }
