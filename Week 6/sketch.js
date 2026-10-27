@@ -178,6 +178,8 @@ if(luffyhealthstatus <= 0){
  if(foodx >= 450 && foodx <=510 && foody >= 260&& foody <=290){
  spawnfood = false
  luffyfoodstatus = luffyfoodstatus + 1
+ foodx = 1
+ foody = 1
  
  }
 else if(currentbackground !== 0){
