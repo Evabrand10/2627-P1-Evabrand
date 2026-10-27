@@ -22,6 +22,9 @@ let luffyenergyspeed = 0.053;
 let luffyhealthspeed = 0.7;
 let luffyx = 250
 let luffyinbed = false
+let spawnfood = false
+let foodx = 0
+let foody = 0
 
 
 function setup() {
@@ -138,6 +141,9 @@ if(luffyhealthstatus <= 0){
  if(luffyhealthstatus >= 5){
   luffyhealthstatus = 5
  }
+ if(spawnfood == true){
+  image(luffyfood,foodx,foody,50,50);
+ }
 }
 function preload() {
   for (let i = 0; i < backgroundPaths.length; i++) {
@@ -178,7 +184,9 @@ function luffyexitbed() {
 }
 function luffyeatingfood() {
   luffyfoodstatus = luffyfoodstatus + 0.8;
-
+ spawnfood = true;
+ foodx = random(1000)
+ foody = random(600)
 }
 function reset() {
   luffyfoodstatus = 5
