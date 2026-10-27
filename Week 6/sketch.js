@@ -8,7 +8,7 @@ let buttonsleep;
 let buttonoutside;
 let buttonluffysleep;
 let luffyoutsidebed;
-let currentbackground = 1
+let currentbackground = 0
 let luffyhealth;
 let luffyenergy;
 let luffyfood;
@@ -25,6 +25,7 @@ let luffyinbed = false
 let spawnfood = false
 let foodx = 0
 let foody = 0
+let grabfood = false
 
 
 function setup() {
@@ -68,6 +69,9 @@ function draw() {
   if (luffyhealthstatus <= 0) {
     buttonrespawn.show();
   }
+  if(luffyhealthstatus <=0 && currentbackground == 3){
+    currentbackground = 0
+  }
   else {
     buttonrespawn.hide();
   }
@@ -76,7 +80,7 @@ function draw() {
   } // als luffy honger heeft gaat hij langzaam dood
 
   if (luffyenergystatus <= 0) { // als luffy moe is dan krijgt hij sneller honger
-    luffyhungerspeed = 0.5
+    luffyhungerspeed = 0.2
   }
   else {
     luffyhungerspeed = 0.1
@@ -134,6 +138,7 @@ function draw() {
   }
 if(luffyhealthstatus <= 0){
   buttonluffysleep.hide();
+  
  }
  if(luffyfoodstatus >= 4 && luffyenergystatus >= 4){
   luffyhealthstatus = luffyhealthstatus + deltaTime * 0.001 * luffyhealthspeed
@@ -141,9 +146,25 @@ if(luffyhealthstatus <= 0){
  if(luffyhealthstatus >= 5){
   luffyhealthstatus = 5
  }
+ if(foodx >= 450 && foodx <=510 && foody >= 260&& foody <=290){
+ spawnfood = false
+ luffyfoodstatus = luffyfoodstatus + 1
+ foodx = 1 
+ foody = 1
+ }
+else if(currentbackground !== 0){
+  spawnfood = false
+}
+
+
  if(spawnfood == true){
+  if(grabfood == true){
+    foodx = mouseX -11
+    foody = mouseY  -10
+  }
   image(luffyfood,foodx,foody,50,50);
  }
+ 
 }
 function preload() {
   for (let i = 0; i < backgroundPaths.length; i++) {
@@ -183,7 +204,6 @@ function luffyexitbed() {
   luffyinbed = false
 }
 function luffyeatingfood() {
-  luffyfoodstatus = luffyfoodstatus + 0.8;
  spawnfood = true;
  foodx = random(1000)
  foody = random(600)
@@ -193,4 +213,14 @@ function reset() {
   luffyenergystatus = 5
   luffyhealthstatus = 5
 
+}
+function mousePressed(){
+  let d = dist(foodx,foody,mouseX,mouseY);
+  if(d <= 50){
+  grabfood = true
+  }
+}
+
+function mouseReleased(){
+  grabfood = false
 }
