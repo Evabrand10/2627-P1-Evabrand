@@ -8,6 +8,7 @@ let buttonsleep;
 let buttonoutside;
 let buttonluffysleep;
 let luffyoutsidebed;
+let buttonsahur;
 let currentbackground = 0
 let luffyhealth;
 let luffyenergy;
@@ -30,6 +31,10 @@ let grabfood = false
 
 function setup() {
   createCanvas(backgroundaxis[0], backgroundaxis[1]);
+  buttonsahur = createImage("Tungsahur.png")
+  buttonsahur.position(100, 100);
+  buttonsahur.size(100, 40)
+
   buttonoutside = createButton("outside");
   buttonoutside.position(100, 100);
   buttonoutside.size(100, 40)
