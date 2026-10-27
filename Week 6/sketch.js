@@ -68,12 +68,14 @@ function draw() {
   luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
   if (luffyhealthstatus <= 0) {
     buttonrespawn.show();
+    
   }
-  if(luffyhealthstatus <=0 && currentbackground == 3){
-    currentbackground = 0
-  }
-  else {
+   else {
     buttonrespawn.hide();
+  }
+    if(luffyhealthstatus <=0 && currentbackground == 3){
+    currentbackground = 1
+    luffyx = 250
   }
   if (luffyfoodstatus <= 0) {
     luffyhealthstatus = luffyhealthstatus - deltaTime * 0.001 * luffyhealthspeed
@@ -138,7 +140,8 @@ function draw() {
   }
 if(luffyhealthstatus <= 0){
   buttonluffysleep.hide();
-  
+  luffyeating.hide();
+
  }
  if(luffyfoodstatus >= 4 && luffyenergystatus >= 4){
   luffyhealthstatus = luffyhealthstatus + deltaTime * 0.001 * luffyhealthspeed
