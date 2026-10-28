@@ -34,6 +34,7 @@ let sahurpressed = 0
 
 
 function setup() {
+  DataLoad();
   createCanvas(backgroundaxis[0], backgroundaxis[1]);
   buttonsahur = createImg("Tungsahur.png");
   buttonsahur.position(190, 505);
@@ -67,34 +68,34 @@ function setup() {
   buttonrespawn.position(460, 180);
   buttonrespawn.size(100, 40);
   buttonrespawn.mousePressed(reset);
-
+ 
 }
 
 function draw() {
   background(220);
- 
+
   luffyfoodstatus = luffyfoodstatus - deltaTime * 0.001 * luffyhungerspeed;
   luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
-  if(sahurpressed % 2 == 1){
+  if (sahurpressed % 2 == 1) {
     sahur = true
   }
-  else{
+  else {
     sahur = false
   }
-  if(currentbackground == 1){
+  if (currentbackground == 1) {
     buttonsahur.show();
   }
-  else{
+  else {
     buttonsahur.hide();
   }
   if (luffyhealthstatus <= 0) {
     buttonrespawn.show();
-    
+
   }
-   else {
+  else {
     buttonrespawn.hide();
   }
-    if(luffyhealthstatus <=0 && currentbackground == 3){
+  if (luffyhealthstatus <= 0 && currentbackground == 3) {
     currentbackground = 1
     luffyx = 250
   }
@@ -124,7 +125,7 @@ function draw() {
   if (luffyhealthstatus <= 0) {
     image(luffydead, luffyx, 190, 500, 500)
   }
-  else if(sahur == true){
+  else if (sahur == true) {
     image(luffytungsahur, luffyx, 190, 500, 500)
   }
 
@@ -144,7 +145,7 @@ function draw() {
   if (currentbackground == 3) {
     luffyinbed = true
   }
- 
+
   else {
     luffyinbed = false
   }
@@ -164,36 +165,38 @@ function draw() {
     luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
     luffyoutsidebed.hide()
   }
-if(luffyhealthstatus <= 0){
-  buttonluffysleep.hide();
-  luffyeating.hide();
+  if (luffyhealthstatus <= 0) {
+    buttonluffysleep.hide();
+    luffyeating.hide();
 
- }
- if(luffyfoodstatus >= 4 && luffyenergystatus >= 4){
-  luffyhealthstatus = luffyhealthstatus + deltaTime * 0.001 * luffyhealthspeed
- }
- if(luffyhealthstatus >= 5){
-  luffyhealthstatus = 5
- }
- if(foodx >= 450 && foodx <=510 && foody >= 260&& foody <=290){
- spawnfood = false
- luffyfoodstatus = luffyfoodstatus + 1
- foodx = 1
- foody = 1
- 
- }
-else if(currentbackground !== 0){
-  spawnfood = false
-}
-
-
- if(spawnfood == true){
-  if(grabfood == true){
-    foodx = mouseX -11
-    foody = mouseY  -10
   }
-  image(luffyfood,foodx,foody,50,50);
- }
+  if (luffyfoodstatus >= 4 && luffyenergystatus >= 4) {
+    luffyhealthstatus = luffyhealthstatus + deltaTime * 0.001 * luffyhealthspeed
+  }
+  if (luffyhealthstatus >= 5) {
+    luffyhealthstatus = 5
+  }
+  if (foodx >= 450 && foodx <= 510 && foody >= 260 && foody <= 290) {
+    spawnfood = false
+    luffyfoodstatus = luffyfoodstatus + 1
+    foodx = 1
+    foody = 1
+
+  }
+  else if (currentbackground !== 0) {
+    spawnfood = false
+  }
+
+
+  if (spawnfood == true) {
+    if (grabfood == true) {
+      foodx = mouseX - 11
+      foody = mouseY - 10
+    }
+    image(luffyfood, foodx, foody, 50, 50);
+  }
+
+  DataSave();
  
 }
 function preload() {
@@ -234,9 +237,9 @@ function luffyexitbed() {
   luffyinbed = false
 }
 function luffyeatingfood() {
- spawnfood = true;
- foodx = random(200,700)
- foody = random(200,500)
+  spawnfood = true;
+  foodx = random(200, 700)
+  foody = random(200, 500)
 }
 function reset() {
   luffyfoodstatus = 5
@@ -244,16 +247,36 @@ function reset() {
   luffyhealthstatus = 5
 
 }
-function mousePressed(){
-  let d = dist(foodx,foody,mouseX,mouseY);
-  if(d <= 50){
-  grabfood = true
+function mousePressed() {
+  let d = dist(foodx, foody, mouseX, mouseY);
+  if (d <= 50) {
+    grabfood = true
   }
 }
 
-function mouseReleased(){
+function mouseReleased() {
   grabfood = false
 }
-function luffytungtungsahur(){
+function luffytungtungsahur() {
   sahurpressed += 1
 }
+function DataLoad(){
+  luffyfoodstatus = getItem("food");
+  if (luffyfoodstatus == null){
+    luffyfoodstatus = 5;
+  }
+   luffyhealthstatus = getItem("health");
+  if (luffyhealthstatus == null){
+    luffyhealthstatus = 5;
+  }
+   luffyenergystatus = getItem("energy");
+  if (luffyenergystatus == null){
+    luffyenergystatus = 5;
+  }
+}
+function DataSave(){
+  storeItem("food",luffyfoodstatus);
+  storeItem("health",luffyhealthstatus);
+  storeItem("energy",luffyenergystatus);
+}
+
