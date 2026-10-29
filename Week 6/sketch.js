@@ -30,6 +30,10 @@ let grabfood = false
 let luffytungsahur;
 let sahur = false
 let sahurpressed = 0
+let TijdLevend = 0 
+let Tijdstop = 1
+let tijdX = 130
+let tijdY = 50
 
 
 
@@ -168,6 +172,10 @@ function draw() {
   if (luffyhealthstatus <= 0) {
     buttonluffysleep.hide();
     luffyeating.hide();
+    Tijdstop = 0
+    tijdX = 490
+    tijdY = 150
+
 
   }
   if (luffyfoodstatus >= 4 && luffyenergystatus >= 4) {
@@ -197,6 +205,8 @@ function draw() {
   }
 
   DataSave();
+  Timer();
+  console.log(TijdLevend);
  
 }
 function preload() {
@@ -245,6 +255,10 @@ function reset() {
   luffyfoodstatus = 5
   luffyenergystatus = 5
   luffyhealthstatus = 5
+  tijdX = 130
+  tijdY = 50
+  TijdLevend = 0
+  Tijdstop = 1
 
 }
 function mousePressed() {
@@ -273,10 +287,25 @@ function DataLoad(){
   if (luffyenergystatus == null){
     luffyenergystatus = 5;
   }
+     TijdLevend = getItem("TijdLevend");
+  if (TijdLevend == null){
+    TijdLevend = 0;
+  }
 }
 function DataSave(){
   storeItem("food",luffyfoodstatus);
   storeItem("health",luffyhealthstatus);
   storeItem("energy",luffyenergystatus);
+   storeItem("TijdLevend",TijdLevend);
+}
+function Timer(){
+   TijdLevend = TijdLevend + deltaTime * 0.001 * Tijdstop;
+   
+   fill(255  )
+   text("timesurvived",5000,5000); 
+   text("time:",100,50)
+
+   text(round(TijdLevend),tijdX,tijdY)
+   
 }
 
