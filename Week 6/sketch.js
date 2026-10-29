@@ -39,6 +39,8 @@ let tijdY = 50
 let timedead = 5000
 let rottonornot = 0
 let meatrotten;
+let plusfoodstatus = 1
+let trashcan;
 
 
 
@@ -194,7 +196,7 @@ function draw() {
   }
   if (foodx >= 450 && foodx <= 510 && foody >= 260 && foody <= 290) {
     spawnfood = false
-    luffyfoodstatus = luffyfoodstatus + 1
+    luffyfoodstatus = luffyfoodstatus + plusfoodstatus
     foodx = 1
     foody = 1
 
@@ -209,16 +211,19 @@ function draw() {
       foodx = mouseX - 11
       foody = mouseY - 10
     }
-    if (rottonornot <90) {
+    if (rottonornot <80) {
       image(luffyfood, foodx, foody, 50, 50);
+      plusfoodstatus = 1
     }
     else {
     image(meatrotten, foodx,foody,50, 50);
+    plusfoodstatus = -3
     }
   }
 
   DataSave();
   Timer();
+  loadtrashcan();
 
 
 }
@@ -231,11 +236,12 @@ function preload() {
 
   luffy = loadImage(luffyappearance[0]);
   luffydead = loadImage(luffyappearance[1]);
-  luffyhealth = loadImage("luffyheart.png")
-  luffyenergy = loadImage("energylogoluffy.png")
-  luffyfood = loadImage("luffyfood.png")
-  luffytungsahur = loadImage("Luffysahur.png")
+  luffyhealth = loadImage("luffyheart.png");
+  luffyenergy = loadImage("energylogoluffy.png");
+  luffyfood = loadImage("luffyfood.png");
+  luffytungsahur = loadImage("Luffysahur.png");
   meatrotten = loadImage("meatrotten.png");
+  trashcan = loadImage("trashcan.png");
 }
 function sleepbutton() {
   currentbackground = 1
@@ -290,6 +296,14 @@ function mouseReleased() {
 }
 function luffytungtungsahur() {
   sahurpressed += 1
+}
+function loadtrashcan(){
+  if(currentbackground == 0){
+    if(foodx >= 50&& foodx<=250&& foody >=450 &&foody <= 600){
+      spawnfood = false
+    }
+    image(trashcan,0,450,300,300)
+  }
 }
 function DataLoad() {
   luffyfoodstatus = getItem("food");
