@@ -45,7 +45,7 @@ let enterbath;
 let exitbath;
 let soap;
 let soapstatus = 5
-let soapspeed = 0.02
+let soapspeed = 0.07
 let inbath = false
 
 
@@ -225,7 +225,7 @@ function draw() {
   }
   if (inbath == false) {
     soapstatus = soapstatus - deltaTime * 0.001 * soapspeed;
-    soapspeed = 0.02
+    soapspeed = 0.07
   }
   else {
     soapspeed = 0.7
