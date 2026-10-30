@@ -1,5 +1,5 @@
 let backgroundaxis = [1000, 700]
-let backgroundPaths = ["Thousand_sunny_kitchen.png", "Thousand_sunny_sick_bay.png", "Thousand_sunny_maindeck.jpg", "Thousand_sunny_sick_bay_luffy.png"]
+let backgroundPaths = ["Thousand_sunny_kitchen.png", "Thousand_sunny_sick_bay.png", "Thousand_sunny_maindeck.jpg", "Thousand_sunny_sick_bay_luffy.png", "bathroom.png", "bathroomluffy.png"]
 let backgroundImages = []
 let luffyappearance = ["luffy idle.png", "Luffydead.png"]
 let luffy;
@@ -17,9 +17,9 @@ let luffyeating
 let luffyhealthstatus = 5
 let luffyenergystatus = 5
 let luffyfoodstatus = 5;
-let luffyhungerspeed = 0.1;
+let luffyhungerspeed = 0.08;
 let luffyheatlhspeed = 0.1;
-let luffyenergyspeed = 0.053;
+let luffyenergyspeed = 0.038;
 let luffyhealthspeed = 0.7;
 let luffyx = 250
 let luffyinbed = false
@@ -41,6 +41,13 @@ let rottonornot = 0
 let meatrotten;
 let plusfoodstatus = 1
 let trashcan;
+let enterbath;
+let exitbath;
+let soap;
+let soapstatus = 5
+let soapspeed = 0.08
+let inbath = false
+
 
 
 
@@ -63,13 +70,13 @@ function setup() {
   buttonsleep.position(100, 200);
   buttonsleep.size(100, 40);
   buttonsleep.mousePressed(sleepbutton);
-  buttonluffysleep = createButton("enter bed");
-  buttonluffysleep.position(850, 330);
-  buttonluffysleep.size(100, 40);
+  buttonluffysleep = createImg("button enter bed.png");
+  buttonluffysleep.position(800, 330);
+  buttonluffysleep.size(200, 80);
   buttonluffysleep.mousePressed(luffysleep);
-  luffyoutsidebed = createButton("exit bed");
+  luffyoutsidebed = createImg("button exit bed.png");
   luffyoutsidebed.position(850, 330);
-  luffyoutsidebed.size(100, 40);
+  luffyoutsidebed.size(150, 80);
   luffyoutsidebed.mousePressed(luffyexitbed);
   luffyeating = createButton("Eat");
   luffyeating.position(850, 330);
@@ -79,14 +86,51 @@ function setup() {
   buttonrespawn.position(460, 180);
   buttonrespawn.size(100, 40);
   buttonrespawn.mousePressed(reset);
+  buttonoutside = createButton("bathroom");
+  buttonoutside.position(100, 250);
+  buttonoutside.size(100, 40);
+  buttonoutside.mousePressed(bathroom);
+  enterbath = createButton("enterbath");
+  enterbath.position(850, 330);
+  enterbath.size(100, 40);
+  enterbath.mousePressed(bathenter);
+  exitbath = createButton("exitbath");
+  exitbath.position(850, 330);
+  exitbath.size(100, 40);
+  exitbath.mousePressed(bathexit);
+
 
 }
 
 function draw() {
-  background(220);
-
+  background(220)
+  if (soapstatus >= 5) {
+    soapstatus = 5
+  }
+ 
+  if (luffyhealthstatus <= 0 && currentbackground == 5) {
+    currentbackground = 4
+    luffyx = 250
+    enterbath.hide();
+    exitbath.hide();
+  }
+  if (currentbackground == 4) {
+    enterbath.show();
+  }
+  else {
+    enterbath.hide();
+  }
+  if (currentbackground == 5) {
+    exitbath.show();
+    inbath = true
+  }
+  else {
+    exitbath.hide();
+    inbath = false  
+  }
   luffyfoodstatus = luffyfoodstatus - deltaTime * 0.001 * luffyhungerspeed;
   luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
+  
   if (sahurpressed % 2 == 1) {
     sahur = true
   }
@@ -153,6 +197,9 @@ function draw() {
   for (let i = 0; i < luffyfoodstatus; i++) {
     image(luffyfood, 920 - (i * 40), 150, 45, 60)
   }
+  for (let i = 0; i < soapstatus; i++) {
+    image(soap, 900 - (i * 45), 200, 95, 60)
+  }
   if (currentbackground == 3) {
     luffyinbed = true
   }
@@ -176,16 +223,20 @@ function draw() {
     luffyenergystatus = luffyenergystatus - deltaTime * 0.001 * luffyenergyspeed;
     luffyoutsidebed.hide()
   }
+  if (inbath == false) {
+    soapstatus = soapstatus - deltaTime * 0.001 * soapspeed;
+    soapspeed = 0.08
+  }
+  else {
+    soapspeed = 0.7
+    soapstatus = soapstatus + deltaTime * 0.001 * soapspeed;
+  }
   if (luffyhealthstatus <= 0) {
     buttonluffysleep.hide();
     luffyeating.hide();
     Tijdstop = 0
     tijdX = 490
     tijdY = 150
-
-
-
-
   }
 
   if (luffyfoodstatus >= 4 && luffyenergystatus >= 4) {
@@ -211,14 +262,18 @@ function draw() {
       foodx = mouseX - 11
       foody = mouseY - 10
     }
-    if (rottonornot <80) {
+    if (rottonornot < 80) {
       image(luffyfood, foodx, foody, 50, 50);
       plusfoodstatus = 1
     }
     else {
-    image(meatrotten, foodx,foody,50, 50);
-    plusfoodstatus = -3
+      image(meatrotten, foodx, foody, 50, 50);
+      plusfoodstatus = -3
     }
+  }
+   if (soapstatus <= 0) {
+    soapstatus = 0
+    luffyenergyspeed = 0.3
   }
 
   DataSave();
@@ -242,6 +297,7 @@ function preload() {
   luffytungsahur = loadImage("Luffysahur.png");
   meatrotten = loadImage("meatrotten.png");
   trashcan = loadImage("trashcan.png");
+  soap = loadImage("soap.png");
 }
 function sleepbutton() {
   currentbackground = 1
@@ -265,6 +321,10 @@ function luffyexitbed() {
   currentbackground = 1
   luffyx = 250
   luffyinbed = false
+}
+function bathroom() {
+  currentbackground = 4
+  luffyx = 250
 }
 function luffyeatingfood() {
   rottonornot = random(0, 100)
@@ -294,15 +354,27 @@ function mousePressed() {
 function mouseReleased() {
   grabfood = false
 }
+function bathenter() {
+  currentbackground = 5
+  luffyx = 5000
+ 
+
+}
+function bathexit() {
+  currentbackground = 4
+  luffyx = 250
+ 
+
+}
 function luffytungtungsahur() {
   sahurpressed += 1
 }
-function loadtrashcan(){
-  if(currentbackground == 0){
-    if(foodx >= 50&& foodx<=250&& foody >=450 &&foody <= 600){
+function loadtrashcan() {
+  if (currentbackground == 0) {
+    if (foodx >= 50 && foodx <= 250 && foody >= 450 && foody <= 600) {
       spawnfood = false
     }
-    image(trashcan,0,450,300,300)
+    image(trashcan, 0, 450, 300, 300)
   }
 }
 function DataLoad() {
