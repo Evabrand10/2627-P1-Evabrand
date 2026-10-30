@@ -17,7 +17,7 @@ let luffyeating
 let luffyhealthstatus = 5
 let luffyenergystatus = 5
 let luffyfoodstatus = 5;
-let luffyhungerspeed = 0.08;
+let luffyhungerspeed = 0.04;
 let luffyheatlhspeed = 0.1;
 let luffyenergyspeed = 0.038;
 let luffyhealthspeed = 0.7;
@@ -45,7 +45,7 @@ let enterbath;
 let exitbath;
 let soap;
 let soapstatus = 5
-let soapspeed = 0.08
+let soapspeed = 0.02
 let inbath = false
 
 
@@ -58,43 +58,43 @@ function setup() {
   buttonsahur.position(190, 505);
   buttonsahur.size(20, 40);
   buttonsahur.mousePressed(luffytungtungsahur)
-  buttonoutside = createButton("outside");
+  buttonoutside = createImg("outside.png");
   buttonoutside.position(100, 100);
-  buttonoutside.size(100, 40);
+  buttonoutside.size(120, 50);
   buttonoutside.mousePressed(outsidebutton)
-  buttonfood = createButton("Eat");
+  buttonfood = createImg("Eat.png");
   buttonfood.position(100, 150);
-  buttonfood.size(100, 40);
+  buttonfood.size(120, 50);
   buttonfood.mousePressed(foodbutton);
-  buttonsleep = createButton("sleep");
+  buttonsleep = createImg("sleep.png");
   buttonsleep.position(100, 200);
-  buttonsleep.size(100, 40);
+  buttonsleep.size(120, 50);
   buttonsleep.mousePressed(sleepbutton);
   buttonluffysleep = createImg("button enter bed.png");
-  buttonluffysleep.position(800, 330);
-  buttonluffysleep.size(200, 80);
+  buttonluffysleep.position(850, 330);
+  buttonluffysleep.size(150, 80);
   buttonluffysleep.mousePressed(luffysleep);
   luffyoutsidebed = createImg("button exit bed.png");
   luffyoutsidebed.position(850, 330);
   luffyoutsidebed.size(150, 80);
   luffyoutsidebed.mousePressed(luffyexitbed);
-  luffyeating = createButton("Eat");
+  luffyeating = createImg("Eat.png");
   luffyeating.position(850, 330);
   luffyeating.size(100, 40);
   luffyeating.mousePressed(luffyeatingfood);
-  buttonrespawn = createButton("respawn");
+  buttonrespawn = createImg("Respawn.png");
   buttonrespawn.position(460, 180);
   buttonrespawn.size(100, 40);
   buttonrespawn.mousePressed(reset);
-  buttonoutside = createButton("bathroom");
+  buttonoutside = createImg("bathroombutton.png");
   buttonoutside.position(100, 250);
-  buttonoutside.size(100, 40);
+  buttonoutside.size(120, 50);
   buttonoutside.mousePressed(bathroom);
-  enterbath = createButton("enterbath");
+  enterbath = createImg("Enter bath.png");
   enterbath.position(850, 330);
   enterbath.size(100, 40);
   enterbath.mousePressed(bathenter);
-  exitbath = createButton("exitbath");
+  exitbath = createImg("exit bath.png");
   exitbath.position(850, 330);
   exitbath.size(100, 40);
   exitbath.mousePressed(bathexit);
@@ -162,7 +162,7 @@ function draw() {
     luffyhungerspeed = 0.2
   }
   else {
-    luffyhungerspeed = 0.1
+    luffyhungerspeed = 0.04
   }
   if (luffyenergystatus >= 5) {
     luffyenergystatus = 5
@@ -225,7 +225,7 @@ function draw() {
   }
   if (inbath == false) {
     soapstatus = soapstatus - deltaTime * 0.001 * soapspeed;
-    soapspeed = 0.08
+    soapspeed = 0.02
   }
   else {
     soapspeed = 0.7
@@ -274,6 +274,9 @@ function draw() {
    if (soapstatus <= 0) {
     soapstatus = 0
     luffyenergyspeed = 0.3
+  }
+  else{
+    luffyenergyspeed = 0.0318
   }
 
   DataSave();
@@ -402,6 +405,10 @@ function DataLoad() {
   if (TijdLevendH == null) {
     TijdLevendH = 0;
   }
+    soapstatus = getItem("soapstatus");
+  if (soapstatus == null) {
+    soapstatus = 5;
+  }
 }
 function DataSave() {
   storeItem("food", luffyfoodstatus);
@@ -410,6 +417,7 @@ function DataSave() {
   storeItem("TijdLevendS", TijdLevendS);
   storeItem("TijdLevendM", TijdLevendM);
   storeItem("TijdLevendH", TijdLevendH);
+  storeItem("soapstatus", soapstatus)
 }
 function Timer() {
   TijdLevendS = TijdLevendS + deltaTime * 0.001 * Tijdstop;
