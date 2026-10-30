@@ -17,7 +17,7 @@ let luffyeating
 let luffyhealthstatus = 5
 let luffyenergystatus = 5
 let luffyfoodstatus = 5;
-let luffyhungerspeed = 0.04;
+let luffyhungerspeed = 0.08;
 let luffyheatlhspeed = 0.1;
 let luffyenergyspeed = 0.038;
 let luffyhealthspeed = 0.7;
@@ -162,7 +162,7 @@ function draw() {
     luffyhungerspeed = 0.2
   }
   else {
-    luffyhungerspeed = 0.04
+    luffyhungerspeed = 0.08
   }
   if (luffyenergystatus >= 5) {
     luffyenergystatus = 5
