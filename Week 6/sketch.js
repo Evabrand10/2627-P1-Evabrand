@@ -345,6 +345,7 @@ function reset() {
   TijdLevendM = 0
   TijdLevendH = 0
   Tijdstop = 1
+  soapstatus = 5
 
 }
 function mousePressed() {
